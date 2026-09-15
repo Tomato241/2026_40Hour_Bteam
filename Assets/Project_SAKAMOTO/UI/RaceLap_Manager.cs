@@ -73,39 +73,24 @@ public class RaceLap_Manager : MonoBehaviour
         LapCount_2p = 1;
         //lapCount_3p = 1;
         //lapCount_4p = 1;
-        LapStatus_1p = 4;
-        LapStatus_2p = 9;
-        //LapStatus_3p = 14;
-        //LapStatus_4p = 19;
+        LapStatus_1p = 4;//インスペクターの1P表示初期位置
+        LapStatus_2p = 9;//インスペクターの2P表示初期位置
+        //LapStatus_3p = 14;//インスペクターの3P表示初期位置
+        //LapStatus_4p = 19;//インスペクターの4P表示初期位置
 
 
         //finishiText.text = "";
-        finishRenderer.enabled = false;
+        finishRenderer.enabled = false;//Finishの画像を非表示状態にセット
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (IsFinish) return;
+    if (IsFinish) return;//レース終了時、以降の処理をしない
 
-        if(Keyboard.current.enterKey.wasPressedThisFrame)
-        {
-            ++LapCount_1p;
-        }
-        if (Keyboard.current.backspaceKey.wasPressedThisFrame)
-        {
-            ++LapCount_2p;
-        }
 
-        if (Keyboard.current.wKey.wasPressedThisFrame)
-        {
-            --LapCount_1p;
-        }
-        if (Keyboard.current.sKey.wasPressedThisFrame)
-        {
-            --LapCount_2p;
-        }
-
+        //↓エラー防止用制限↓
+        //ラップ数カウント
         if(LapCount_1p<1)
         {
             LapCount_1p = 1;
@@ -114,45 +99,12 @@ public class RaceLap_Manager : MonoBehaviour
         {
             LapCount_2p = 1;
         }
-
-
-
-        if (LapCount_1p!=1
-            &&lastLap_1p!= LapCount_1p
-            && lastLap_1p < LapCount_1p)
-        {
-            ++LapStatus_1p;
-            ChangeLapImage(LapStatus_1p);
-        }
-        if (LapCount_2p != 1
-            &&lastLap_2p != LapCount_2p
-            &&lastLap_2p < LapCount_2p)
-        {
-            ++LapStatus_2p;
-            ChangeLapImage(LapStatus_2p);
-        }
-
-
-        if (LapCount_1p < 4
-           && lastLap_1p != LapCount_1p
-           && lastLap_1p > LapCount_1p)
-        {
-            --LapStatus_1p;
-            ChangeLapImage(LapStatus_1p);
-        }
-        if (LapCount_2p < 9
-            && lastLap_2p != LapCount_2p
-            && lastLap_2p > LapCount_2p)
-        {
-            --LapStatus_2p;
-            ChangeLapImage(LapStatus_2p);
-        }
-
-        if(LapStatus_1p<=4)
+        //ラップ数表示状態
+        if (LapStatus_1p <= 4)
         {
             LapStatus_1p = 4;
         }
-        else if(LapStatus_1p>=8)
+        else if (LapStatus_1p >= 8)
         {
             LapStatus_1p = 8;
         }
@@ -165,25 +117,76 @@ public class RaceLap_Manager : MonoBehaviour
             LapStatus_2p = 14;
         }
 
+        //**********************************************
+        //ラップ数増加・減少処理はこの下に書いてください
+        //**********************************************
+        //↓ラップ数増加・減少処理↓
 
-        if (Keyboard.current.upArrowKey.isPressed)
+
+        //↓ラップ表示のUI更新処理↓
+
+        //ラップ数増加の場合
+        //ラップ数が初期値ではなく、
+        //前回と今回のフレームでラップ数が異なり、
+        //前回より今回のフレームのラップ数が多ければ
+        if (LapCount_1p!=1
+            &&lastLap_1p!= LapCount_1p
+            && lastLap_1p < LapCount_1p)
         {
-            ChangeLapImage(reverseImage_1p);
+            ++LapStatus_1p;                 //1Pのラップ数表示状態を1加算
+            ChangeLapImage(LapStatus_1p);   //表示状態を反映
         }
-        if (Keyboard.current.downArrowKey.isPressed)
+        if (LapCount_2p != 1
+            &&lastLap_2p != LapCount_2p
+            &&lastLap_2p < LapCount_2p)
         {
-            ChangeLapImage(reverseImage_2p);
+            ++LapStatus_2p;                 //2Pのラップ数表示状態を1加算
+            ChangeLapImage(LapStatus_2p);   //表示状態を反映
+        }
+
+        //ラップ数減少の場合
+        //ラップ数が初期値ではなく、
+        //前回と今回のフレームでラップ数が異なり、
+        //前回より今回のフレームのラップ数が多ければ
+        if (LapCount_1p < 4
+           && lastLap_1p != LapCount_1p
+           && lastLap_1p > LapCount_1p)
+        {
+            --LapStatus_1p;                 //1Pのラップ数表示状態を1減算
+            ChangeLapImage(LapStatus_1p);   //表示状態を反映
+        }
+        if (LapCount_2p < 9
+            && lastLap_2p != LapCount_2p
+            && lastLap_2p > LapCount_2p)
+        {
+            --LapStatus_2p;                 //2Pのラップ数表示状態を1減算
+            ChangeLapImage(LapStatus_2p);   //表示状態を反映
         }
 
 
-        //Player1P～Player4P誰かがラップ数が最大ラップ数を超えたら
+
+        //↓逆走時のUI表示処理↓
+        //
+        //if (1P逆走フラグ)
+        //{
+        //    ChangeLapImage(reverseImage_1p);
+        //}
+        //if (2P逆走フラグ)
+        //{
+        //    ChangeLapImage(reverseImage_2p);
+        //}
+
+
+
+        //↓Player1P～Player4P誰かがラップ数が↓
+        //↓最大ラップ数を超えた時の処理      ↓
         if (LapCount_1p >= finalRap
             ||LapCount_2p >= finalRap)
         {
             StartCoroutine(VisibleFinishText());
         }
 
-
+        //次回のフレームで比較するために保存
         lastLap_1p = LapCount_1p;
         lastLap_2p = LapCount_2p;
     }
@@ -199,15 +202,19 @@ public class RaceLap_Manager : MonoBehaviour
     //Finishのテキスト表示
     private IEnumerator VisibleFinishText()
     {
-        IsFinish = true;
+        IsFinish = true;//レース終了フラグをオン
         //finishiText.text = "FINISH!";//Finishのテキスト表示
         finishRenderer.enabled = true;//Finishの画像表示
         yield return new WaitForSeconds(3f);
         RoadResultScene();//リザルトシーンの遷移処理
     }
 
+
+    //ラップ数表示の切り替え処理
     private void ChangeLapImage(int index)
     {
+        //indexで受け取った番号のオブジェクトを対象に
+        //indexで受け取った番号の画像に切り替える
         lapspriteList[index].targetRenderer.sprite = lapspriteList[index].lapSprite;
     }
 
