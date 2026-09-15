@@ -23,14 +23,15 @@ public class RaceLap_Manager : MonoBehaviour
     //private int lastLap_3p = 0;
     //private int lastLap_4p = 0;
 
-
+    //ラップ数表示状態を保存する変数
     private int LapStatus_1p = 0;
     private int LapStatus_2p = 0;
     //private int LapStatus_3p = 0;
     //private int LapStatus_4p = 0;
 
-    private int reverseImage_1p = 0;
-    private int reverseImage_2p = 0;
+    //逆走状態を保存する定数
+    private const int REVERSEIMAGE_1P = 0;
+    private const int REVERSEIMAGE_2P = 1;
     //private int ReverseImage_3p = 0;
     //private int ReverseImage_4p = 0;
 
@@ -89,9 +90,10 @@ public class RaceLap_Manager : MonoBehaviour
     if (IsFinish) return;//レース終了時、以降の処理をしない
 
 
+
         //↓エラー防止用制限↓
         //ラップ数カウント
-        if(LapCount_1p<1)
+        if (LapCount_1p<1)
         {
             LapCount_1p = 1;
         }
@@ -169,11 +171,19 @@ public class RaceLap_Manager : MonoBehaviour
         //
         //if (1P逆走フラグ)
         //{
-        //    ChangeLapImage(reverseImage_1p);
+        //    ChangeLapImage(REVERSEIMAGE_1P);
+        //}
+        //else
+        //{
+        //    ChangeLapImage(LapStatus_1p);
         //}
         //if (2P逆走フラグ)
         //{
-        //    ChangeLapImage(reverseImage_2p);
+        //    ChangeLapImage(REVERSEIMAGE_1P);
+        //}
+        //else
+        //{
+        //    ChangeLapImage(LapStatus_2p);
         //}
 
 
