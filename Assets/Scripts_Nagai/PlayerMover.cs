@@ -1,67 +1,53 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-//プレイヤーの移動を制御するスクリプト
+//プレイヤー（ボート）の移動を制御するスクリプト
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerMove : MonoBehaviour
 {
     [Header("移動")]
-    [SerializeField]
-    private float maxMoveSpeed = 8f;
-    [SerializeField]
-    private float acceleration = 6f;
-    [SerializeField]
-    private float deceleration = 4f;
+    [SerializeField] private float maxMoveSpeed = 8f;
+    [SerializeField] private float acceleration = 6f;
+    [SerializeField] private float deceleration = 4f;
 
     [Header("回転")]
-    [SerializeField]
-    private float maxRotationSpeed = 120f;
-    [SerializeField]
-    private float rotationAcceleration = 200f;
+    [SerializeField] private float maxRotationSpeed = 120f;
+    [SerializeField] private float rotationAcceleration = 200f;
 
     [Header("水上の滑り（ドリフト）")]
-    [SerializeField, Range(0.1f, 10f)]
-    private float grip = 2f;
+    [SerializeField, Range(0.1f, 10f)] private float grip = 2f;
 
-    private float currentSpeed = 0f;
-    private float currentRotationSpeed = 0f;
-    private Vector3 velocityDirection;
     private Rigidbody rb;
+    private Gamepad pad;
+    private float speed;
+    private float rotationSpeed;
+    private Vector3 velocityDirection;
 
-    void Start()
+    //外部から呼び出してコントローラーを割り当てる
+    public void AssignGamepad(Gamepad gamepad) => pad = gamepad;
+
+    void Awake()
     {
-        velocityDirection = transform.forward;
         rb = GetComponent<Rigidbody>();
-
-        if (Gamepad.current == null)
-        {
-            Debug.Log("ゲームパッドが接続されていません");
-        }
+        velocityDirection = transform.forward;
+        pad ??= Gamepad.current; //未割り当てなら暫定でcurrentを使う
     }
 
     void Update()
     {
-        if (Gamepad.current == null) return;
+        if (pad == null) return;
 
-        //--- 前進の加減速処理（数値計算のみ、ここではtransformを触らない） ---
-        float targetSpeed = Gamepad.current.buttonSouth.isPressed ? maxMoveSpeed : 0f;
-        currentSpeed = Mathf.MoveTowards(currentSpeed, targetSpeed,
-            (targetSpeed > 0f ? acceleration : deceleration) * Time.deltaTime);
+        float targetSpeed = pad.buttonSouth.isPressed ? maxMoveSpeed : 0f;
+        speed = Mathf.MoveTowards(speed, targetSpeed, (targetSpeed > 0f ? acceleration : deceleration) * Time.deltaTime);
 
-        //--- 回転速度の計算のみ（実際の回転はFixedUpdateで行う） ---
-        Vector2 moveInput = Gamepad.current.leftStick.ReadValue();
-        float targetRotationSpeed = moveInput.x * maxRotationSpeed;
-        currentRotationSpeed = Mathf.MoveTowards(currentRotationSpeed, targetRotationSpeed, rotationAcceleration * Time.deltaTime);
+        float targetRotation = pad.leftStick.ReadValue().x * maxRotationSpeed;
+        rotationSpeed = Mathf.MoveTowards(rotationSpeed, targetRotation, rotationAcceleration * Time.deltaTime);
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
-        //--- 船体の回転（物理エンジン経由） ---
-        rb.MoveRotation(rb.rotation * Quaternion.Euler(0f, currentRotationSpeed * Time.fixedDeltaTime, 0f));
-
-        //--- 進行方向を船体の向きに少しずつ近づける ---
+        rb.MoveRotation(rb.rotation * Quaternion.Euler(0f, rotationSpeed * Time.fixedDeltaTime, 0f));
         velocityDirection = Vector3.Slerp(velocityDirection, transform.forward, grip * Time.fixedDeltaTime);
-
-        //--- 実際の移動 ---
-        rb.MovePosition(rb.position + velocityDirection * currentSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + velocityDirection * speed * Time.fixedDeltaTime);
     }
 }
