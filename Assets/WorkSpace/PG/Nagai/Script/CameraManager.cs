@@ -2,63 +2,98 @@ using UnityEngine;
 
 public class RailFollowCamera : MonoBehaviour
 {
-    [Header("追従対象")]
-    public Transform target;          // プレイヤー
+    [Header("追従対象(2人)")]
+    public Transform targetA;
+    public Transform targetB;
 
     [Header("レール(中央オブジェクト)")]
-    public Transform railCenter;      // コース中央のオブジェクト
-    public Vector3 railDirection = Vector3.right; // レールが伸びている方向(ローカル軸)
-    public float railHalfLength = 5f; // レールの片側の長さ(スライド可能範囲)
+    public Transform railCenter;
 
-    [Header("カメラオフセット")]
-    public Vector3 offset = new Vector3(0, 8, -10); // レール軸に対する相対オフセット
+    [Header("移動範囲(長方形)")]
+    public Vector3 axisX = Vector3.right;    // 横方向の軸(ローカル)
+    public Vector3 axisZ = Vector3.forward;  // 奥行き方向の軸(ローカル)
+    public float halfWidth = 5f;   // axisX方向の可動範囲(片側)
+    public float halfDepth = 3f;   // axisZ方向の可動範囲(片側)
+
+    [Header("カメラオフセット(基準)")]
+    public Vector3 baseOffset = new Vector3(0, 8, -10);
     public float smoothSpeed = 5f;
 
+    [Header("距離に応じたズームアウト")]
+    public float minDistance = 3f;
+    public float maxDistance = 15f;
+    public float maxExtraHeight = 10f;
+
     [Header("見る対象")]
-    public bool lookAtTarget = true;
+    public bool lookAtMidpoint = true;
 
     void LateUpdate()
     {
-        if (target == null || railCenter == null) return;
+        if (targetA == null || targetB == null || railCenter == null) return;
 
-        // 1. レールのワールド方向を求める(中央オブジェクトの回転を反映)
-        Vector3 worldRailDir = railCenter.TransformDirection(railDirection.normalized);
+        // 1. 2人の中点
+        Vector3 midpoint = (targetA.position + targetB.position) * 0.5f;
 
-        // 2. プレイヤーの位置をレール軸に投影し、中心からの距離を測る
-        Vector3 toTarget = target.position - railCenter.position;
-        float projectedDist = Vector3.Dot(toTarget, worldRailDir);
+        // 2. 2つの軸をワールド方向に変換
+        Vector3 worldAxisX = railCenter.TransformDirection(axisX.normalized);
+        Vector3 worldAxisZ = railCenter.TransformDirection(axisZ.normalized);
 
-        // 3. スライド範囲をClamp(コースの端で止める)
-        projectedDist = Mathf.Clamp(projectedDist, -railHalfLength, railHalfLength);
+        // 3. 中点を中央からの相対ベクトルにする
+        Vector3 toMid = midpoint - railCenter.position;
 
-        // 4. レール上の対応点を求める
-        Vector3 pointOnRail = railCenter.position + worldRailDir * projectedDist;
+        // 4. それぞれの軸に投影してからClamp(ここが「四角形」の肝)
+        float distX = Vector3.Dot(toMid, worldAxisX);
+        float distZ = Vector3.Dot(toMid, worldAxisZ);
+        distX = Mathf.Clamp(distX, -halfWidth, halfWidth);
+        distZ = Mathf.Clamp(distZ, -halfDepth, halfDepth);
 
-        // 5. オフセットを加えてカメラの目標位置を決定
-        //    offsetはrailCenterの向きに合わせて回転させる(コースが斜めでも対応)
-        Vector3 worldOffset = railCenter.rotation * offset;
-        Vector3 desiredPos = pointOnRail + worldOffset;
+        // 5. 2軸を合成して長方形内の点を求める
+        Vector3 pointInRect = railCenter.position + worldAxisX * distX + worldAxisZ * distZ;
 
-        // 6. 滑らかに追従
+        // 6. ズーム係数計算(変更なし)
+        float playerDist = Vector3.Distance(targetA.position, targetB.position);
+        float t = Mathf.InverseLerp(minDistance, maxDistance, playerDist);
+
+        Vector3 scaledOffset = baseOffset;
+        scaledOffset.y = baseOffset.y + maxExtraHeight * t;
+        Vector3 worldOffset = railCenter.rotation * scaledOffset;
+
+        // 7. カメラの目標位置
+        Vector3 desiredPos = pointInRect + worldOffset;
         transform.position = Vector3.Lerp(transform.position, desiredPos, smoothSpeed * Time.deltaTime);
 
-        if (lookAtTarget)
+        // 8. 向き
+        if (lookAtMidpoint)
         {
-            Quaternion desiredRot = Quaternion.LookRotation(target.position - transform.position);
+            Quaternion desiredRot = Quaternion.LookRotation(midpoint - transform.position);
             transform.rotation = Quaternion.Slerp(transform.rotation, desiredRot, smoothSpeed * Time.deltaTime);
         }
     }
 
-    // シーンビューでレールとオフセットの範囲を確認できるように
     void OnDrawGizmosSelected()
     {
         if (railCenter == null) return;
-        Vector3 worldRailDir = railCenter.TransformDirection(railDirection.normalized);
-        Vector3 p1 = railCenter.position + worldRailDir * railHalfLength;
-        Vector3 p2 = railCenter.position - worldRailDir * railHalfLength;
+
+        Vector3 worldAxisX = railCenter.TransformDirection(axisX.normalized);
+        Vector3 worldAxisZ = railCenter.TransformDirection(axisZ.normalized);
+        Vector3 center = railCenter.position;
+
+        // 長方形の4隅を計算して線で結ぶ
+        Vector3 p1 = center + worldAxisX * halfWidth + worldAxisZ * halfDepth;
+        Vector3 p2 = center + worldAxisX * halfWidth - worldAxisZ * halfDepth;
+        Vector3 p3 = center - worldAxisX * halfWidth - worldAxisZ * halfDepth;
+        Vector3 p4 = center - worldAxisX * halfWidth + worldAxisZ * halfDepth;
+
         Gizmos.color = Color.cyan;
         Gizmos.DrawLine(p1, p2);
-        Gizmos.DrawSphere(p1, 0.2f);
-        Gizmos.DrawSphere(p2, 0.2f);
+        Gizmos.DrawLine(p2, p3);
+        Gizmos.DrawLine(p3, p4);
+        Gizmos.DrawLine(p4, p1);
+
+        if (targetA != null && targetB != null)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawLine(targetA.position, targetB.position);
+        }
     }
 }

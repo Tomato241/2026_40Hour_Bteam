@@ -23,8 +23,19 @@ public class PlayerMove : MonoBehaviour
     private float rotationSpeed;
     private Vector3 velocityDirection;
 
+    //コイン取得によるスピードブースト
+    private float boostMultiplier = 1f;
+    private float boostTimer = 0f;
+
     //外部から呼び出してコントローラーを割り当てる
     public void AssignGamepad(Gamepad gamepad) => pad = gamepad;
+
+    //外部（GetCoinCounterなど）から呼び出してスピードブーストをかける
+    public void ApplySpeedBoost(float multiplier, float duration)
+    {
+        boostMultiplier = multiplier;
+        boostTimer = duration;
+    }
 
     void Awake()
     {
@@ -37,7 +48,14 @@ public class PlayerMove : MonoBehaviour
     {
         if (pad == null) return;
 
-        float targetSpeed = pad.buttonSouth.isPressed ? maxMoveSpeed : 0f;
+        //ブーストタイマーの更新
+        if (boostTimer > 0f)
+        {
+            boostTimer -= Time.deltaTime;
+            if (boostTimer <= 0f) boostMultiplier = 1f;
+        }
+
+        float targetSpeed = (pad.buttonSouth.isPressed ? maxMoveSpeed : 0f) * boostMultiplier;
         speed = Mathf.MoveTowards(speed, targetSpeed, (targetSpeed > 0f ? acceleration : deceleration) * Time.deltaTime);
 
         float targetRotation = pad.leftStick.ReadValue().x * maxRotationSpeed;
