@@ -91,6 +91,7 @@ public class RaceLap_Manager : MonoBehaviour
 
 
 
+
         //↓エラー防止用制限↓
         //ラップ数カウント
         if (LapCount_1p<1)
@@ -227,6 +228,13 @@ public class RaceLap_Manager : MonoBehaviour
         //indexで受け取った番号の画像に切り替える
         lapspriteList[index].targetRenderer.sprite = lapspriteList[index].lapSprite;
     }
+
+
+
+    
+
+
+    
 
 
 
