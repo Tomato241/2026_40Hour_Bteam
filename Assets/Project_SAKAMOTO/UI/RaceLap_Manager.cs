@@ -3,7 +3,8 @@ using System.Collections;
 using TMPro; //TextMeshProを使うために必要 
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;//シーン管理に必要
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;//シーン管理に必要
 
 
 public class RaceLap_Manager : MonoBehaviour
@@ -43,7 +44,7 @@ public class RaceLap_Manager : MonoBehaviour
         public string objectName;
 
         [Header("操作したいオブジェクト")]
-        public SpriteRenderer targetRenderer;
+        public SpriteRenderer targetSpriterenderer;
 
         [Header("変更したい画像")]
         public Sprite lapSprite;
@@ -64,7 +65,7 @@ public class RaceLap_Manager : MonoBehaviour
     [Header("Finishのテキスト")][SerializeField] private TextMeshProUGUI finishiText; //Finishの表示用変数
 
     [Header("Finishの表示オブジェクト")][SerializeField] private SpriteRenderer finishRenderer;
-    //[Header("Finishの表示オブジェクト")][SerializeField] private Sprite finishImage;
+    [Header("Finishの表示オブジェクト")][SerializeField] private Sprite finishImage;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -88,7 +89,6 @@ public class RaceLap_Manager : MonoBehaviour
     void Update()
     {
     if (IsFinish) return;//レース終了時、以降の処理をしない
-
 
 
 
@@ -206,7 +206,7 @@ public class RaceLap_Manager : MonoBehaviour
     //リザルトシーンの遷移処理
     private void RoadResultScene()
     {
-        SceneManager.LoadScene("Result");//リザルトシーンに遷移
+        SceneManager.LoadScene("ResultScene");//リザルトシーンに遷移
     }
 
 
@@ -226,15 +226,8 @@ public class RaceLap_Manager : MonoBehaviour
     {
         //indexで受け取った番号のオブジェクトを対象に
         //indexで受け取った番号の画像に切り替える
-        lapspriteList[index].targetRenderer.sprite = lapspriteList[index].lapSprite;
+        lapspriteList[index].targetSpriterenderer.sprite = lapspriteList[index].lapSprite;
     }
-
-
-
-    
-
-
-    
 
 
 

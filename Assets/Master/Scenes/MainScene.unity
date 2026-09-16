@@ -567,6 +567,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 115.03418, y: 80.31427, z: 214.62492}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &231771960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231771952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f624d001f34f5a040ade416be84a860e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GoalLine_Counter
+  isPassFront: 0
+  isPassBack: 0
+  startCount: 0
 --- !u!1 &268274309
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,17 +714,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 4.5, z: 1}
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &339049776 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4934849462616722132, guid: 5e3c700956823e24c876353e405352c5, type: 3}
-  m_PrefabInstance: {fileID: 73230340}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &367310704 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 589cd9f63e82ecb41b5360eb6160f1f6, type: 3}
@@ -1025,6 +1029,59 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2892111}
   m_SourcePrefab: {fileID: 100100000, guid: b31518980f7577143997c9a671ed90be, type: 3}
+--- !u!1 &521922664
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 521922666}
+  - component: {fileID: 521922665}
+  m_Layer: 0
+  m_Name: FrontGoalLine
+  m_TagString: GoalFront
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &521922665
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521922664}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.1, y: 1, z: 8}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &521922666
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521922664}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &524863089
 GameObject:
   m_ObjectHideFlags: 0
@@ -1136,7 +1193,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2367358448348798702, guid: 2255a9323fbac2648bbf3796f8cd8448, type: 3}
   m_PrefabInstance: {fileID: 2044994067}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &591917001
+--- !u!114 &591917004
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1154,55 +1211,56 @@ MonoBehaviour:
   LapCount_3p: 0
   LapCount_4p: 0
   lapspriteList:
-  - objectName: "\u9006\u8D70\u72B6\u614B_1P"
-    targetRenderer: {fileID: 1922893412}
+  - objectName: 
+    targetSpriterenderer: {fileID: 1922893412}
     lapSprite: {fileID: 21300000, guid: 6198f823b241c074f9d49f3945909b26, type: 3}
-  - objectName: "\u9006\u8D70\u72B6\u614B_2P"
-    targetRenderer: {fileID: 1339084075}
+  - objectName: 
+    targetSpriterenderer: {fileID: 1339084075}
     lapSprite: {fileID: 21300000, guid: 6198f823b241c074f9d49f3945909b26, type: 3}
-  - objectName: "\u9006\u8D70\u72B6\u614B_3P"
-    targetRenderer: {fileID: 1400193314}
+  - objectName: 
+    targetSpriterenderer: {fileID: 1400193314}
     lapSprite: {fileID: 21300000, guid: 6198f823b241c074f9d49f3945909b26, type: 3}
-  - objectName: "\u9006\u8D70\u72B6\u614B_4P"
-    targetRenderer: {fileID: 434909647}
+  - objectName: 
+    targetSpriterenderer: {fileID: 434909647}
     lapSprite: {fileID: 21300000, guid: 6198f823b241c074f9d49f3945909b26, type: 3}
-  - objectName: Lap1_1P
-    targetRenderer: {fileID: 1922893412}
+  - objectName: 
+    targetSpriterenderer: {fileID: 1922893412}
     lapSprite: {fileID: 21300000, guid: 86f36352eb1818e45852546e6a094c9d, type: 3}
-  - objectName: Lap2_1P
-    targetRenderer: {fileID: 1922893412}
+  - objectName: 
+    targetSpriterenderer: {fileID: 1922893412}
     lapSprite: {fileID: 21300000, guid: 11f2aa49db89961449763d2c92a488f3, type: 3}
-  - objectName: Lap3_1P
-    targetRenderer: {fileID: 1922893412}
+  - objectName: 
+    targetSpriterenderer: {fileID: 1922893412}
     lapSprite: {fileID: 21300000, guid: 81299e794162f1c40ad4f5450d5c1fd8, type: 3}
-  - objectName: Lap4_1P
-    targetRenderer: {fileID: 1922893412}
+  - objectName: 
+    targetSpriterenderer: {fileID: 1922893412}
     lapSprite: {fileID: 21300000, guid: f83b8578af795994a88a91796ae76442, type: 3}
-  - objectName: Lap5_1P
-    targetRenderer: {fileID: 1922893412}
+  - objectName: 
+    targetSpriterenderer: {fileID: 1922893412}
     lapSprite: {fileID: 21300000, guid: 1b93f9feb91c3764fac121e91e449cb8, type: 3}
-  - objectName: Lap1_2P
-    targetRenderer: {fileID: 1339084075}
+  - objectName: 
+    targetSpriterenderer: {fileID: 1339084075}
     lapSprite: {fileID: 21300000, guid: 86f36352eb1818e45852546e6a094c9d, type: 3}
-  - objectName: Lap2_2P
-    targetRenderer: {fileID: 1339084075}
+  - objectName: 
+    targetSpriterenderer: {fileID: 1339084075}
     lapSprite: {fileID: 21300000, guid: 11f2aa49db89961449763d2c92a488f3, type: 3}
-  - objectName: Lap3_2P
-    targetRenderer: {fileID: 1339084075}
+  - objectName: 
+    targetSpriterenderer: {fileID: 1339084075}
     lapSprite: {fileID: 21300000, guid: 81299e794162f1c40ad4f5450d5c1fd8, type: 3}
-  - objectName: Lap4_2P
-    targetRenderer: {fileID: 1339084075}
+  - objectName: 
+    targetSpriterenderer: {fileID: 1339084075}
     lapSprite: {fileID: 21300000, guid: f83b8578af795994a88a91796ae76442, type: 3}
-  - objectName: Lap5_2P
-    targetRenderer: {fileID: 1339084075}
+  - objectName: 
+    targetSpriterenderer: {fileID: 1339084075}
     lapSprite: {fileID: 21300000, guid: 1b93f9feb91c3764fac121e91e449cb8, type: 3}
   lapCountText_1P: {fileID: 0}
   lapCountText_2P: {fileID: 0}
   lapCountText_3P: {fileID: 0}
   lapCountText_4P: {fileID: 0}
   finalRap: 5
-  finishiText: {fileID: 339049776}
+  finishiText: {fileID: 0}
   finishRenderer: {fileID: 480520836}
+  finishImage: {fileID: 21300000, guid: 34d7f001457bee048a5fa88c248aebc4, type: 3}
 --- !u!1001 &605893414
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2274,7 +2332,7 @@ MonoBehaviour:
   axisZ: {x: 0, y: 0, z: 1}
   halfWidth: 19
   halfDepth: 3
-  baseOffset: {x: 0, y: 15, z: -12}
+  baseOffset: {x: 0, y: 15, z: -7.5}
   smoothSpeed: 5
   minDistance: 5
   maxDistance: 15
@@ -2892,6 +2950,9 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 56159757f591d0e49a15c43c25e9e382, type: 3}
       insertIndex: 2
+      addedObject: {fileID: 231771960}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 56159757f591d0e49a15c43c25e9e382, type: 3}
+      insertIndex: 3
       addedObject: {fileID: 231771955}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 56159757f591d0e49a15c43c25e9e382, type: 3}
       insertIndex: -1
@@ -2900,6 +2961,59 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 231771958}
   m_SourcePrefab: {fileID: 100100000, guid: 56159757f591d0e49a15c43c25e9e382, type: 3}
+--- !u!1 &1853561712
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1853561714}
+  - component: {fileID: 1853561713}
+  m_Layer: 0
+  m_Name: GoalLine
+  m_TagString: GoalBack
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1853561713
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853561712}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.1, y: 1, z: 8}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1853561714
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853561712}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5, y: 0, z: -7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1867817200 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4222125341086967571, guid: f9a65faa75a01e842ab838522f6c888f, type: 3}
@@ -3492,13 +3606,138 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'LapCount_Manager '
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 2367358448348798702, guid: 2255a9323fbac2648bbf3796f8cd8448, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7871704354059072704, guid: 2255a9323fbac2648bbf3796f8cd8448, type: 3}
+      propertyPath: lapspriteList.Array.size
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7871704354059072704, guid: 2255a9323fbac2648bbf3796f8cd8448, type: 3}
+      propertyPath: lapspriteList.Array.data[0].lapSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6198f823b241c074f9d49f3945909b26, type: 3}
+    - target: {fileID: 7871704354059072704, guid: 2255a9323fbac2648bbf3796f8cd8448, type: 3}
+      propertyPath: lapspriteList.Array.data[1].lapSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6198f823b241c074f9d49f3945909b26, type: 3}
+    - target: {fileID: 7871704354059072704, guid: 2255a9323fbac2648bbf3796f8cd8448, type: 3}
+      propertyPath: lapspriteList.Array.data[2].lapSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6198f823b241c074f9d49f3945909b26, type: 3}
+    - target: {fileID: 7871704354059072704, guid: 2255a9323fbac2648bbf3796f8cd8448, type: 3}
+      propertyPath: lapspriteList.Array.data[3].lapSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6198f823b241c074f9d49f3945909b26, type: 3}
+    - target: {fileID: 7871704354059072704, guid: 2255a9323fbac2648bbf3796f8cd8448, type: 3}
+      propertyPath: lapspriteList.Array.data[4].lapSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 86f36352eb1818e45852546e6a094c9d, type: 3}
+    - target: {fileID: 7871704354059072704, guid: 2255a9323fbac2648bbf3796f8cd8448, type: 3}
+      propertyPath: lapspriteList.Array.data[5].lapSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 11f2aa49db89961449763d2c92a488f3, type: 3}
+    - target: {fileID: 7871704354059072704, guid: 2255a9323fbac2648bbf3796f8cd8448, type: 3}
+      propertyPath: lapspriteList.Array.data[6].lapSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 81299e794162f1c40ad4f5450d5c1fd8, type: 3}
+    - target: {fileID: 7871704354059072704, guid: 2255a9323fbac2648bbf3796f8cd8448, type: 3}
+      propertyPath: lapspriteList.Array.data[7].lapSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f83b8578af795994a88a91796ae76442, type: 3}
+    - target: {fileID: 7871704354059072704, guid: 2255a9323fbac2648bbf3796f8cd8448, type: 3}
+      propertyPath: lapspriteList.Array.data[8].lapSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1b93f9feb91c3764fac121e91e449cb8, type: 3}
+    - target: {fileID: 7871704354059072704, guid: 2255a9323fbac2648bbf3796f8cd8448, type: 3}
+      propertyPath: lapspriteList.Array.data[9].lapSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 86f36352eb1818e45852546e6a094c9d, type: 3}
+    - target: {fileID: 7871704354059072704, guid: 2255a9323fbac2648bbf3796f8cd8448, type: 3}
+      propertyPath: lapspriteList.Array.data[0].objectName
+      value: "\u9006\u8D70\u72B6\u614B_1P"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7871704354059072704, guid: 2255a9323fbac2648bbf3796f8cd8448, type: 3}
+      propertyPath: lapspriteList.Array.data[10].lapSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 11f2aa49db89961449763d2c92a488f3, type: 3}
+    - target: {fileID: 7871704354059072704, guid: 2255a9323fbac2648bbf3796f8cd8448, type: 3}
+      propertyPath: lapspriteList.Array.data[11].lapSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 81299e794162f1c40ad4f5450d5c1fd8, type: 3}
+    - target: {fileID: 7871704354059072704, guid: 2255a9323fbac2648bbf3796f8cd8448, type: 3}
+      propertyPath: lapspriteList.Array.data[12].lapSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f83b8578af795994a88a91796ae76442, type: 3}
+    - target: {fileID: 7871704354059072704, guid: 2255a9323fbac2648bbf3796f8cd8448, type: 3}
+      propertyPath: lapspriteList.Array.data[13].lapSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1b93f9feb91c3764fac121e91e449cb8, type: 3}
+    - target: {fileID: 7871704354059072704, guid: 2255a9323fbac2648bbf3796f8cd8448, type: 3}
+      propertyPath: lapspriteList.Array.data[0].targetSpriterenderer
+      value: 
+      objectReference: {fileID: 1922893412}
+    - target: {fileID: 7871704354059072704, guid: 2255a9323fbac2648bbf3796f8cd8448, type: 3}
+      propertyPath: lapspriteList.Array.data[1].targetSpriterenderer
+      value: 
+      objectReference: {fileID: 1339084075}
+    - target: {fileID: 7871704354059072704, guid: 2255a9323fbac2648bbf3796f8cd8448, type: 3}
+      propertyPath: lapspriteList.Array.data[2].targetSpriterenderer
+      value: 
+      objectReference: {fileID: 1400193314}
+    - target: {fileID: 7871704354059072704, guid: 2255a9323fbac2648bbf3796f8cd8448, type: 3}
+      propertyPath: lapspriteList.Array.data[3].targetSpriterenderer
+      value: 
+      objectReference: {fileID: 434909647}
+    - target: {fileID: 7871704354059072704, guid: 2255a9323fbac2648bbf3796f8cd8448, type: 3}
+      propertyPath: lapspriteList.Array.data[4].targetSpriterenderer
+      value: 
+      objectReference: {fileID: 1922893412}
+    - target: {fileID: 7871704354059072704, guid: 2255a9323fbac2648bbf3796f8cd8448, type: 3}
+      propertyPath: lapspriteList.Array.data[5].targetSpriterenderer
+      value: 
+      objectReference: {fileID: 1922893412}
+    - target: {fileID: 7871704354059072704, guid: 2255a9323fbac2648bbf3796f8cd8448, type: 3}
+      propertyPath: lapspriteList.Array.data[6].targetSpriterenderer
+      value: 
+      objectReference: {fileID: 1922893412}
+    - target: {fileID: 7871704354059072704, guid: 2255a9323fbac2648bbf3796f8cd8448, type: 3}
+      propertyPath: lapspriteList.Array.data[7].targetSpriterenderer
+      value: 
+      objectReference: {fileID: 1922893412}
+    - target: {fileID: 7871704354059072704, guid: 2255a9323fbac2648bbf3796f8cd8448, type: 3}
+      propertyPath: lapspriteList.Array.data[8].targetSpriterenderer
+      value: 
+      objectReference: {fileID: 1922893412}
+    - target: {fileID: 7871704354059072704, guid: 2255a9323fbac2648bbf3796f8cd8448, type: 3}
+      propertyPath: lapspriteList.Array.data[9].targetSpriterenderer
+      value: 
+      objectReference: {fileID: 1339084075}
+    - target: {fileID: 7871704354059072704, guid: 2255a9323fbac2648bbf3796f8cd8448, type: 3}
+      propertyPath: lapspriteList.Array.data[10].targetSpriterenderer
+      value: 
+      objectReference: {fileID: 1339084075}
+    - target: {fileID: 7871704354059072704, guid: 2255a9323fbac2648bbf3796f8cd8448, type: 3}
+      propertyPath: lapspriteList.Array.data[11].targetSpriterenderer
+      value: 
+      objectReference: {fileID: 1339084075}
+    - target: {fileID: 7871704354059072704, guid: 2255a9323fbac2648bbf3796f8cd8448, type: 3}
+      propertyPath: lapspriteList.Array.data[12].targetSpriterenderer
+      value: 
+      objectReference: {fileID: 1339084075}
+    - target: {fileID: 7871704354059072704, guid: 2255a9323fbac2648bbf3796f8cd8448, type: 3}
+      propertyPath: lapspriteList.Array.data[13].targetSpriterenderer
+      value: 
+      objectReference: {fileID: 1339084075}
+    m_RemovedComponents:
+    - {fileID: 7871704354059072704, guid: 2255a9323fbac2648bbf3796f8cd8448, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2367358448348798702, guid: 2255a9323fbac2648bbf3796f8cd8448, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 591917001}
+      addedObject: {fileID: 591917004}
   m_SourcePrefab: {fileID: 100100000, guid: 2255a9323fbac2648bbf3796f8cd8448, type: 3}
 --- !u!1 &2057032882
 GameObject:
@@ -3680,6 +3919,10 @@ PrefabInstance:
     - target: {fileID: 1442873026053312267, guid: 2935269e382bb2c4c9155f5983892827, type: 3}
       propertyPath: m_Name
       value: LapStatus
+      objectReference: {fileID: 0}
+    - target: {fileID: 1442873026053312267, guid: 2935269e382bb2c4c9155f5983892827, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4641137087103574231, guid: 2935269e382bb2c4c9155f5983892827, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4038,3 +4281,5 @@ SceneRoots:
   - {fileID: 1953139588}
   - {fileID: 713581204}
   - {fileID: 973754471}
+  - {fileID: 521922666}
+  - {fileID: 1853561714}
