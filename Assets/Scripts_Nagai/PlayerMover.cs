@@ -17,6 +17,11 @@ public class PlayerMove : MonoBehaviour
     [Header("水上の滑り（ドリフト）")]
     [SerializeField, Range(0.1f, 10f)] private float grip = 2f;
 
+    [Header("壁バウンド")]
+    [SerializeField] private string wallTag = "Wall"; // 壁オブジェクトに付けるタグ
+    [SerializeField] private float bounceForce = 5f;  // 跳ね返る強さ
+    [SerializeField, Range(0f, 1f)] private float bounceSpeedRetention = 0.5f; // 跳ね返り後に速度を何割残すか
+
     private Rigidbody rb;
     private Gamepad pad;
     private float speed;
@@ -67,5 +72,24 @@ public class PlayerMove : MonoBehaviour
         rb.MoveRotation(rb.rotation * Quaternion.Euler(0f, rotationSpeed * Time.fixedDeltaTime, 0f));
         velocityDirection = Vector3.Slerp(velocityDirection, transform.forward, grip * Time.fixedDeltaTime);
         rb.MovePosition(rb.position + velocityDirection * speed * Time.fixedDeltaTime);
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (!collision.gameObject.CompareTag(wallTag)) return;
+
+        // 壁の法線方向を取得(複数接触点の平均)
+        Vector3 normal = Vector3.zero;
+        foreach (ContactPoint contact in collision.contacts)
+        {
+            normal += contact.normal;
+        }
+        normal.Normalize();
+
+        // 進行方向を壁の法線で反射させる
+        velocityDirection = Vector3.Reflect(velocityDirection, normal).normalized;
+
+        // 速度は元の勢いに関係なく常に一定量で跳ね返す
+        speed = bounceForce;
     }
 }
