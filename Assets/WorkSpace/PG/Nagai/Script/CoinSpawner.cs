@@ -4,7 +4,11 @@ using UnityEngine.InputSystem;
 public class CoinSpawner : MonoBehaviour
 {
     [SerializeField]
-    private GameObject coinPrefab;
+    private GameObject coinPrefabBuff;   // バフ用コインのプレハブ
+    [SerializeField]
+    private GameObject coinPrefabDebuff; // デバフ用コインのプレハブ
+    [SerializeField, Range(0f, 1f)]
+    private float buffSpawnChance = 0.5f; // バフコインが出現する確率
     [SerializeField]
     private float positionMinX = 0f;
     [SerializeField]
@@ -22,17 +26,18 @@ public class CoinSpawner : MonoBehaviour
     }
     void Update()
     {
-        if(Keyboard.current.spaceKey.wasPressedThisFrame)
-        {
-            CoinSpawn();
-        }
+
     }
     void CoinSpawn()
     {
         // コインをランダムな位置に生成する
         Vector3 spawnPosition = new Vector3
-            (Random.Range(positionMinX, positionMaxX), positiony, 
+            (Random.Range(positionMinX, positionMaxX), positiony,
              Random.Range(positionMinZ, positionMaxZ));
-        Instantiate(coinPrefab, spawnPosition, Quaternion.identity);
+
+        // バフ／デバフどちらのコインを出すかをランダムに決定する
+        GameObject prefabToSpawn = (Random.value < buffSpawnChance) ? coinPrefabBuff : coinPrefabDebuff;
+
+        Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
     }
 }
