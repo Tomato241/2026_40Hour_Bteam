@@ -7,6 +7,7 @@ public class GoalLine_2P_Counter : MonoBehaviour
 
     [SerializeField] private bool isFirst;//初回通過時のフラグ
 
+    [SerializeField] private CoinSpawner[] coinSpawner; // CoinSpawnerの参照
     RaceLap_Manager racelap_manager;
 
     void Start()
@@ -72,9 +73,22 @@ public class GoalLine_2P_Counter : MonoBehaviour
                     ++racelap_manager.LapCount_2p;//2Pのラップ数を加算
                     hasPassBack = false;          //バックポイント通過フラグをオフ
                     hasPassFront = false;         //フロントポイント通過フラグをオフ
+
+                    if (racelap_manager.LapCount_2p >= racelap_manager.LapCount_1p)
+                    {
+                        SpawnCoinsAll();
+                    }
                     return;             //処理が条件にかからないようにここで終了する
                 }
             }
+        }
+    }
+
+    private void SpawnCoinsAll()
+    {
+        foreach (var spawner in coinSpawner)
+        {
+            spawner.SpawnCoins();
         }
     }
 }
