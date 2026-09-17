@@ -1,6 +1,5 @@
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
+
 public class CoinSpawner : MonoBehaviour
 {
     [SerializeField]
@@ -9,6 +8,8 @@ public class CoinSpawner : MonoBehaviour
     private GameObject coinPrefabDebuff; // デバフ用コインのプレハブ
     [SerializeField, Range(0f, 1f)]
     private float buffSpawnChance = 0.5f; // バフコインが出現する確率
+    [SerializeField, Min(1)]
+    private int spawnCount = 1;          // 1回のゴールで生成するコインの数
     [SerializeField]
     private float positionMinX = 0f;
     [SerializeField]
@@ -18,24 +19,27 @@ public class CoinSpawner : MonoBehaviour
     [SerializeField]
     private float positionMaxZ = 0f;
     [SerializeField]
-    private float positiony = 0f;
+    private float positionY = 0f;
 
-    void Start()
+    /// <summary>
+    /// ゴール時などに外部から呼び出してコインを生成する
+    /// </summary>
+    public void SpawnCoins()
     {
-        CoinSpawn();
+        for (int i = 0; i < spawnCount; i++)
+        {
+            CoinSpawn();
+        }
     }
-    void Update()
-    {
 
-    }
-    void CoinSpawn()
+    private void CoinSpawn()
     {
-        // コインをランダムな位置に生成する
-        Vector3 spawnPosition = new Vector3
-            (Random.Range(positionMinX, positionMaxX), positiony,
-             Random.Range(positionMinZ, positionMaxZ));
+        Vector3 spawnPosition = new Vector3(
+            Random.Range(positionMinX, positionMaxX),
+            positionY,
+            Random.Range(positionMinZ, positionMaxZ)
+        );
 
-        // バフ／デバフどちらのコインを出すかをランダムに決定する
         GameObject prefabToSpawn = (Random.value < buffSpawnChance) ? coinPrefabBuff : coinPrefabDebuff;
 
         Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
