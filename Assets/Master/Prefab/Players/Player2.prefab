@@ -79,6 +79,9 @@ PrefabInstance:
       addedObject: {fileID: 1570612841502012241}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e3f18ebff19448048bd088e4215bb263, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 5165678920788126837}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e3f18ebff19448048bd088e4215bb263, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 3714280833657731124}
   m_SourcePrefab: {fileID: 100100000, guid: e3f18ebff19448048bd088e4215bb263, type: 3}
 --- !u!1 &8048499337783749924 stripped
@@ -156,6 +159,21 @@ MonoBehaviour:
   wallTag: Wall
   bounceForce: 5
   bounceSpeedRetention: 0.5
+--- !u!114 &5165678920788126837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8048499337783749924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58af5ccc19dfce24b8695fb16ee32a01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GoalLine_2P_Counter
+  hasPassFront: 0
+  hasPassBack: 0
+  isFirst: 0
 --- !u!65 &3714280833657731124
 BoxCollider:
   m_ObjectHideFlags: 0

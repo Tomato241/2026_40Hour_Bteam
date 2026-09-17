@@ -79,6 +79,9 @@ PrefabInstance:
       addedObject: {fileID: 9201632138897701088}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e3f18ebff19448048bd088e4215bb263, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 3144591255796009203}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e3f18ebff19448048bd088e4215bb263, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 3567469323607514124}
   m_SourcePrefab: {fileID: 100100000, guid: e3f18ebff19448048bd088e4215bb263, type: 3}
 --- !u!1 &2485580084230578517 stripped
@@ -156,6 +159,26 @@ MonoBehaviour:
   wallTag: Wall
   bounceForce: 5
   bounceSpeedRetention: 0.5
+--- !u!114 &3144591255796009203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2485580084230578517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f624d001f34f5a040ade416be84a860e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GoalLine_1P_Counter
+  hasPassFront: 0
+  hasPassBack: 0
+  isFirst: 0
+  coinSpawner:
+  - {fileID: 6729827964347431870, guid: 655ce00f893e0234280cde918eb9b5f4, type: 3}
+  - {fileID: 6549871518096477312, guid: e1f9750af832d604fa9100e071fc330f, type: 3}
+  - {fileID: 8604470974507253912, guid: 57e6c914ccbe42d40a89efad0adb8781, type: 3}
+  - {fileID: 5917627557483498576, guid: 8518b77a8c9f8ff408d44b85ba967cbd, type: 3}
 --- !u!65 &3567469323607514124
 BoxCollider:
   m_ObjectHideFlags: 0
