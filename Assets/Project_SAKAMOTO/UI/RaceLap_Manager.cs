@@ -83,10 +83,10 @@ public class RaceLap_Manager : MonoBehaviour
         IsFinish = false;
         isFinalLap = false;
 
-        LapCount_1p = 1;
-        LapCount_2p = 1;
-        //lapCount_3p = 1;
-        //lapCount_4p = 1;
+        LapCount_1p = 0;
+        LapCount_2p = 0;
+        //lapCount_3p = 0;
+        //lapCount_4p = 0;
         LapStatus_1p = 4;//インスペクターの1P表示初期位置
         LapStatus_2p = 9;//インスペクターの2P表示初期位置
         //LapStatus_3p = 14;//インスペクターの3P表示初期位置
@@ -302,7 +302,7 @@ public class RaceLap_Manager : MonoBehaviour
     //リザルトシーンの遷移処理
     private void RoadResultScene()
     {
-        SceneManager.LoadScene("Result");//リザルトシーンに遷移
+        SceneManager.LoadScene("ResultScene");//リザルトシーンに遷移
     }
 
 
