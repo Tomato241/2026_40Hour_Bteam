@@ -474,7 +474,11 @@ MonoBehaviour:
   countdownText: {fileID: 753513194}
   gameTimerText: {fileID: 1625502506}
   timerSprites: []
-  countdownSprite: {fileID: 0}
+  countdownRenderer: {fileID: 0}
+  countdown_1_Image: {fileID: 0}
+  countdown_2_Image: {fileID: 0}
+  countdown_3_Image: {fileID: 0}
+  countdown_start_Image: {fileID: 0}
   IsStart: 0
   gameTimer: 0
 --- !u!1 &618637842
@@ -932,16 +936,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8278b8d1419f5364691daf5fd51400aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RaceLap_Manager
+  IsFinish: 0
   LapCount_1p: 0
   LapCount_2p: 0
   LapCount_3p: 0
   LapCount_4p: 0
+  lapspriteList: []
   lapCountText_1P: {fileID: 1715803525}
   lapCountText_2P: {fileID: 618637844}
   lapCountText_3P: {fileID: 1679762930}
   lapCountText_4P: {fileID: 915851641}
-  maxRap: 5
+  finalRap: 0
   finishiText: {fileID: 1657690689}
+  finishRenderer: {fileID: 0}
 --- !u!1 &915851639
 GameObject:
   m_ObjectHideFlags: 0
