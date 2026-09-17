@@ -10,17 +10,15 @@ public class RaceTime_Manager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI gameTimerText;//ゲーム内時間用テキスト
 
-    //カウントダウン用の画像を保存する配列
-    [SerializeField] private Sprite[] timerSprites;
 
     private string gametimerStr;//gameTimerの文字列を編集するための変数
 
-    [SerializeField] private SpriteRenderer countdownRenderer;//カウントダウン用切り替え変数
+    //[SerializeField] private SpriteRenderer countd;//カウントダウン用切り替え変数
 
-    [SerializeField] private Sprite countdown_1_Image;//カウントダウン1用画像変数
-    [SerializeField] private Sprite countdown_2_Image;//カウントダウン2用画像変数
-    [SerializeField] private Sprite countdown_3_Image;//カウントダウン3用画像変数
-    [SerializeField] private Sprite countdown_start_Image;//Start用画像変数
+    //[SerializeField] private Sprite countdown_1_Image;//カウントダウン1用画像変数
+    //[SerializeField] private Sprite countdown_2_Image;//カウントダウン2用画像変数
+    //[SerializeField] private Sprite countdown_3_Image;//カウントダウン3用画像変数
+    //[SerializeField] private Sprite countdown_start_Image;//Start用画像変数
 
     public bool IsStart = false;
 
@@ -29,6 +27,9 @@ public class RaceTime_Manager : MonoBehaviour
     RaceLap_Manager raceLap_manager;//レース終了フラグの状態を読み取る変数
 
     public float gameTimer = 0f;
+
+
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -79,6 +80,10 @@ public class RaceTime_Manager : MonoBehaviour
     //カウントダウン処理
     private IEnumerator CountDown()
     {
+        Sound_Manager.instance.PlayStartSE();
+        Sound_Manager.instance.PlayBeforeCheerSE();
+        yield return new WaitForSeconds(5f);
+        Sound_Manager.instance.PlayCountDownSE();
         countdownText.text = "3";                 //テキストの場合
         //countdownRenderer = countdown_3_Image;////画像の場合
         yield return new WaitForSeconds(1f);
@@ -96,6 +101,8 @@ public class RaceTime_Manager : MonoBehaviour
         IsStart = true;
 
         yield return new WaitForSeconds(1f);
+        Sound_Manager.instance.StopBeforeCheerSE();
+        Sound_Manager.instance.PlayGameBGM();
         countdownText.text = "";
     }
 }

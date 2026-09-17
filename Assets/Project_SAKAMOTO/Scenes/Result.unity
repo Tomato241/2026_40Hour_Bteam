@@ -211,6 +211,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &681258391
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6750005243264621707, guid: ddccf0a01c1fd324696cc6edec2f6bac, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750005243264621707, guid: ddccf0a01c1fd324696cc6edec2f6bac, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750005243264621707, guid: ddccf0a01c1fd324696cc6edec2f6bac, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750005243264621707, guid: ddccf0a01c1fd324696cc6edec2f6bac, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750005243264621707, guid: ddccf0a01c1fd324696cc6edec2f6bac, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750005243264621707, guid: ddccf0a01c1fd324696cc6edec2f6bac, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750005243264621707, guid: ddccf0a01c1fd324696cc6edec2f6bac, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750005243264621707, guid: ddccf0a01c1fd324696cc6edec2f6bac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750005243264621707, guid: ddccf0a01c1fd324696cc6edec2f6bac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750005243264621707, guid: ddccf0a01c1fd324696cc6edec2f6bac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113144102104206789, guid: ddccf0a01c1fd324696cc6edec2f6bac, type: 3}
+      propertyPath: m_Name
+      value: SoundManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ddccf0a01c1fd324696cc6edec2f6bac, type: 3}
 --- !u!1 &767088222
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,7 +277,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 767088224}
-  - component: {fileID: 767088223}
+  - component: {fileID: 767088225}
   m_Layer: 0
   m_Name: ResultManager
   m_TagString: Untagged
@@ -228,18 +285,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &767088223
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 767088222}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2c53e261c13a094faf4dfa5da39f7ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Result_Manafer
 --- !u!4 &767088224
 Transform:
   m_ObjectHideFlags: 0
@@ -249,12 +294,24 @@ Transform:
   m_GameObject: {fileID: 767088222}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 433.29712, y: -6.01904, z: -343.0166}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &767088225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 767088222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eba46c21a9208d44d831f419428dcc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Result_Manager
 --- !u!1 &2080456681
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,3 +446,4 @@ SceneRoots:
   - {fileID: 681232765}
   - {fileID: 2080456683}
   - {fileID: 767088224}
+  - {fileID: 681258391}

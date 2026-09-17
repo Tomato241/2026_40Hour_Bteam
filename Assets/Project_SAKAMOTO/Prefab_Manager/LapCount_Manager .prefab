@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2367358448348798702
+--- !u!1 &4184085550050047738
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1686701367723056266}
-  - component: {fileID: 7871704354059072704}
+  - component: {fileID: 8407755486366332763}
+  - component: {fileID: 3406387477978999913}
   m_Layer: 0
   m_Name: 'LapCount_Manager '
   m_TagString: Untagged
@@ -17,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1686701367723056266
+--- !u!4 &8407755486366332763
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2367358448348798702}
+  m_GameObject: {fileID: 4184085550050047738}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,16 +32,16 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7871704354059072704
+--- !u!114 &3406387477978999913
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2367358448348798702}
+  m_GameObject: {fileID: 4184085550050047738}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8278b8d1419f5364691daf5fd51400aa, type: 3}
+  m_Script: {fileID: 11500000, guid: 5645532e7ee2017409b7514a7800b577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RaceLap_Manager
   IsFinish: 0
@@ -51,46 +51,46 @@ MonoBehaviour:
   LapCount_4p: 0
   lapspriteList:
   - objectName: "\u9006\u8D70\u72B6\u614B_1P"
-    targetRenderer: {fileID: 0}
+    targetSpriterenderer: {fileID: 0}
     lapSprite: {fileID: 21300000, guid: 6198f823b241c074f9d49f3945909b26, type: 3}
   - objectName: "\u9006\u8D70\u72B6\u614B_2P"
-    targetRenderer: {fileID: 0}
+    targetSpriterenderer: {fileID: 0}
     lapSprite: {fileID: 21300000, guid: 6198f823b241c074f9d49f3945909b26, type: 3}
   - objectName: "\u9006\u8D70\u72B6\u614B_3P"
-    targetRenderer: {fileID: 0}
+    targetSpriterenderer: {fileID: 0}
     lapSprite: {fileID: 21300000, guid: 6198f823b241c074f9d49f3945909b26, type: 3}
   - objectName: "\u9006\u8D70\u72B6\u614B_4P"
-    targetRenderer: {fileID: 0}
+    targetSpriterenderer: {fileID: 0}
     lapSprite: {fileID: 21300000, guid: 6198f823b241c074f9d49f3945909b26, type: 3}
   - objectName: Lap1_1P
-    targetRenderer: {fileID: 0}
+    targetSpriterenderer: {fileID: 0}
     lapSprite: {fileID: 21300000, guid: 86f36352eb1818e45852546e6a094c9d, type: 3}
   - objectName: Lap2_1P
-    targetRenderer: {fileID: 0}
+    targetSpriterenderer: {fileID: 0}
     lapSprite: {fileID: 21300000, guid: 11f2aa49db89961449763d2c92a488f3, type: 3}
   - objectName: Lap3_1P
-    targetRenderer: {fileID: 0}
+    targetSpriterenderer: {fileID: 0}
     lapSprite: {fileID: 21300000, guid: 81299e794162f1c40ad4f5450d5c1fd8, type: 3}
   - objectName: Lap4_1P
-    targetRenderer: {fileID: 0}
+    targetSpriterenderer: {fileID: 0}
     lapSprite: {fileID: 21300000, guid: f83b8578af795994a88a91796ae76442, type: 3}
   - objectName: Lap5_1P
-    targetRenderer: {fileID: 0}
+    targetSpriterenderer: {fileID: 0}
     lapSprite: {fileID: 21300000, guid: 1b93f9feb91c3764fac121e91e449cb8, type: 3}
   - objectName: Lap1_2P
-    targetRenderer: {fileID: 0}
+    targetSpriterenderer: {fileID: 0}
     lapSprite: {fileID: 21300000, guid: 86f36352eb1818e45852546e6a094c9d, type: 3}
   - objectName: Lap2_2P
-    targetRenderer: {fileID: 0}
+    targetSpriterenderer: {fileID: 0}
     lapSprite: {fileID: 21300000, guid: 11f2aa49db89961449763d2c92a488f3, type: 3}
-  - objectName: Lap2_3P
-    targetRenderer: {fileID: 0}
+  - objectName: Lap3_2P
+    targetSpriterenderer: {fileID: 0}
     lapSprite: {fileID: 21300000, guid: 81299e794162f1c40ad4f5450d5c1fd8, type: 3}
-  - objectName: Lap2_4P
-    targetRenderer: {fileID: 0}
+  - objectName: Lap4_2P
+    targetSpriterenderer: {fileID: 0}
     lapSprite: {fileID: 21300000, guid: f83b8578af795994a88a91796ae76442, type: 3}
-  - objectName: Lap2_5P
-    targetRenderer: {fileID: 0}
+  - objectName: Lap5_2P
+    targetSpriterenderer: {fileID: 0}
     lapSprite: {fileID: 21300000, guid: 1b93f9feb91c3764fac121e91e449cb8, type: 3}
   lapCountText_1P: {fileID: 0}
   lapCountText_2P: {fileID: 0}
@@ -99,3 +99,4 @@ MonoBehaviour:
   finalRap: 5
   finishiText: {fileID: 0}
   finishRenderer: {fileID: 0}
+  finishImage: {fileID: 21300000, guid: 34d7f001457bee048a5fa88c248aebc4, type: 3}

@@ -30,6 +30,8 @@ public class RaceLap_Manager : MonoBehaviour
     //private int LapStatus_3p = 0;
     //private int LapStatus_4p = 0;
 
+    private bool isFinalLap;
+
     //逆走状態を保存する定数
     private const int REVERSEIMAGE_1P = 0;
     private const int REVERSEIMAGE_2P = 1;
@@ -70,6 +72,7 @@ public class RaceLap_Manager : MonoBehaviour
     void Start()
     {
         IsFinish = false;
+        isFinalLap = false;
 
         LapCount_1p = 1;
         LapCount_2p = 1;
@@ -119,6 +122,18 @@ public class RaceLap_Manager : MonoBehaviour
         {
             LapStatus_2p = 14;
         }
+
+
+        if(LapCount_1p==5|| LapCount_2p==5)
+        {
+           if(!isFinalLap)
+            {
+                Sound_Manager.instance.PlayFinalCheerSE();
+                Sound_Manager.instance.PlayFinalLapSE();
+                isFinalLap =true;
+            }
+        }
+
 
         //**********************************************
         //ラップ数増加・減少処理はこの下に書いてください
@@ -191,8 +206,8 @@ public class RaceLap_Manager : MonoBehaviour
 
         //↓Player1P～Player4P誰かがラップ数が↓
         //↓最大ラップ数を超えた時の処理      ↓
-        if (LapCount_1p >= finalRap
-            ||LapCount_2p >= finalRap)
+        if (LapCount_1p > finalRap
+            ||LapCount_2p > finalRap)
         {
             StartCoroutine(VisibleFinishText());
         }
@@ -206,17 +221,20 @@ public class RaceLap_Manager : MonoBehaviour
     //リザルトシーンの遷移処理
     private void RoadResultScene()
     {
-        SceneManager.LoadScene("ResultScene");//リザルトシーンに遷移
+        SceneManager.LoadScene("Result");//リザルトシーンに遷移
     }
 
 
     //Finishのテキスト表示
     private IEnumerator VisibleFinishText()
     {
+        Sound_Manager.instance.StopFinalCheerSE();
+        Sound_Manager.instance.StopBGM();
+        Sound_Manager.instance.PlayGoalSE();//ゴール効果音再生
         IsFinish = true;//レース終了フラグをオン
         //finishiText.text = "FINISH!";//Finishのテキスト表示
         finishRenderer.enabled = true;//Finishの画像表示
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
         RoadResultScene();//リザルトシーンの遷移処理
     }
 
