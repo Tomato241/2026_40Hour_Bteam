@@ -1,21 +1,21 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-//プレイヤー（ボート）の移動を制御するスクリプト
+// プレイヤー（ボート）の移動を制御するスクリプト
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMove : MonoBehaviour
 {
     [Header("移動")]
-    [SerializeField] private float maxMoveSpeed = 8f; //移動速度の最大値
-    [SerializeField] private float acceleration = 6f; //加速量
-    [SerializeField] private float deceleration = 4f; //減速量
+    [SerializeField] private float maxMoveSpeed = 8f; // 移動速度の最大値
+    [SerializeField] private float acceleration = 6f; // 加速量
+    [SerializeField] private float deceleration = 4f; // 減速量
 
     [Header("回転")]
-    [SerializeField] private float maxRotationSpeed = 120f; //回転速度の最大値（度/秒）
-    [SerializeField] private float rotationAcceleration = 200f;　//回転速度の変化量（加速度）
+    [SerializeField] private float maxRotationSpeed = 120f; // 回転速度の最大値（度/秒）
+    [SerializeField] private float rotationAcceleration = 200f; // 回転速度の変化量（加速度）
 
     [Header("水上の滑り（ドリフト）")]
-    [SerializeField, Range(0.1f, 10f)] private float grip = 2f; //滑りの強さ（大きいほど滑りにくくなる）
+    [SerializeField, Range(0.1f, 10f)] private float grip = 2f; // 滑りの強さ（大きいほど滑りにくくなる）
 
     [Header("壁バウンド")]
     [SerializeField] private string wallTag = "Wall"; // 壁オブジェクトに付けるタグ
@@ -28,14 +28,17 @@ public class PlayerMove : MonoBehaviour
     private float rotationSpeed;
     private Vector3 velocityDirection;
 
-    //コイン取得によるスピードブースト
+    // コイン取得によるスピードブースト
     private float boostMultiplier = 1f;
     private float boostTimer = 0f;
 
-    //外部から呼び出してコントローラーを割り当てる
+    // サウンド状態管理フラグ
+    private bool isEngineSoundPlaying = false;
+
+    // 外部から呼び出してコントローラーを割り当てる
     public void AssignGamepad(Gamepad gamepad) => pad = gamepad;
 
-    //外部（GetCoinCounterなど）から呼び出してスピードブーストをかける
+    // 外部（GetCoinCounterなど）から呼び出してスピードブーストをかける
     public void ApplySpeedBoost(float multiplier, float duration)
     {
         boostMultiplier = multiplier;
@@ -46,21 +49,27 @@ public class PlayerMove : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         velocityDirection = transform.forward;
-        pad ??= Gamepad.current; //未割り当てなら暫定でcurrentを使う
+        pad ??= Gamepad.current; // 未割り当てなら暫定でcurrentを使う
     }
 
     void Update()
     {
         if (pad == null) return;
 
-        //ブーストタイマーの更新
+        // ブーストタイマーの更新
         if (boostTimer > 0f)
         {
             boostTimer -= Time.deltaTime;
             if (boostTimer <= 0f) boostMultiplier = 1f;
         }
 
-        float targetSpeed = (pad.buttonSouth.isPressed ? maxMoveSpeed : 0f) * boostMultiplier;
+        bool isAccelerating = pad.buttonSouth.isPressed;
+
+        // エンジン音の再生・停止制御
+        HandleEngineSound(isAccelerating);
+
+        // 移動・回転の計算
+        float targetSpeed = (isAccelerating ? maxMoveSpeed : 0f) * boostMultiplier;
         speed = Mathf.MoveTowards(speed, targetSpeed, (targetSpeed > 0f ? acceleration : deceleration) * Time.deltaTime);
 
         float targetRotation = pad.leftStick.ReadValue().x * maxRotationSpeed;
@@ -74,11 +83,39 @@ public class PlayerMove : MonoBehaviour
         rb.MovePosition(rb.position + velocityDirection * speed * Time.fixedDeltaTime);
     }
 
-    //コイン取得によるマックススピードの永続的な変更（バフ／デバフ用）
+    private void HandleEngineSound(bool isAccelerating)
+    {
+        // アクセルを押している、または慣性で進んでいる時に鳴らす
+        bool shouldPlay = isAccelerating || speed > 0.1f;
+
+        if (shouldPlay && !isEngineSoundPlaying)
+        {
+            Sound_Manager.instance.PlayLoopBoatEngine_1PSE();
+            isEngineSoundPlaying = true;
+        }
+        else if (!shouldPlay && isEngineSoundPlaying)
+        {
+            Sound_Manager.instance.StopBoatEngine_1PSE();
+            isEngineSoundPlaying = false;
+        }
+    }
+
+    private void OnDisable()
+    {
+        // 非表示・破棄された時にSEを停止
+        if (isEngineSoundPlaying && Sound_Manager.instance != null)
+        {
+            Sound_Manager.instance.StopBoatEngine_1PSE();
+            isEngineSoundPlaying = false;
+        }
+    }
+
+    // コイン取得によるマックススピードの永続的な変更（バフ／デバフ用）
     public void ModifyMaxSpeed(float delta)
     {
         maxMoveSpeed = Mathf.Max(0f, maxMoveSpeed + delta);
     }
+
     void OnCollisionEnter(Collision collision)
     {
         if (!collision.gameObject.CompareTag(wallTag)) return;
