@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &7166188326718541941
+--- !u!1001 &3368661989312453636
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -50,50 +50,50 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e3f18ebff19448048bd088e4215bb263, type: 3}
       propertyPath: m_Name
-      value: Player2
+      value: Player1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e3f18ebff19448048bd088e4215bb263, type: 3}
       propertyPath: m_TagString
-      value: Player2
+      value: Player1
       objectReference: {fileID: 0}
     - target: {fileID: 1341259845690771196, guid: e3f18ebff19448048bd088e4215bb263, type: 3}
       propertyPath: m_TagString
-      value: Player2
+      value: Player1
       objectReference: {fileID: 0}
     - target: {fileID: 5500166655485513983, guid: e3f18ebff19448048bd088e4215bb263, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: e57c30e718c91bd4f95f7faab33c44b2, type: 2}
+      objectReference: {fileID: 2100000, guid: 1900ba273e6696547a894839331e4d84, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e3f18ebff19448048bd088e4215bb263, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8178491858834102812}
+      addedObject: {fileID: 7600134870761204034}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e3f18ebff19448048bd088e4215bb263, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7157685401501825938}
+      addedObject: {fileID: 9038177947050655789}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e3f18ebff19448048bd088e4215bb263, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1570612841502012241}
+      addedObject: {fileID: 9201632138897701088}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e3f18ebff19448048bd088e4215bb263, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3714280833657731124}
+      addedObject: {fileID: 3567469323607514124}
   m_SourcePrefab: {fileID: 100100000, guid: e3f18ebff19448048bd088e4215bb263, type: 3}
---- !u!1 &8048499337783749924 stripped
+--- !u!1 &2485580084230578517 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e3f18ebff19448048bd088e4215bb263, type: 3}
-  m_PrefabInstance: {fileID: 7166188326718541941}
+  m_PrefabInstance: {fileID: 3368661989312453636}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &8178491858834102812
+--- !u!95 &7600134870761204034
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8048499337783749924}
+  m_GameObject: {fileID: 2485580084230578517}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: db76cff25342ab94283891dff3b3e258, type: 2}
@@ -108,13 +108,13 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!54 &7157685401501825938
+--- !u!54 &9038177947050655789
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8048499337783749924}
+  m_GameObject: {fileID: 2485580084230578517}
   serializedVersion: 5
   m_Mass: 1
   m_LinearDamping: 0
@@ -133,15 +133,15 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 116
   m_CollisionDetection: 0
---- !u!114 &1570612841502012241
+--- !u!114 &9201632138897701088
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8048499337783749924}
+  m_GameObject: {fileID: 2485580084230578517}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d4264ff75b9e4854a9f0f26dce22c465, type: 3}
@@ -156,13 +156,13 @@ MonoBehaviour:
   wallTag: Wall
   bounceForce: 5
   bounceSpeedRetention: 0.5
---- !u!65 &3714280833657731124
+--- !u!65 &3567469323607514124
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8048499337783749924}
+  m_GameObject: {fileID: 2485580084230578517}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
