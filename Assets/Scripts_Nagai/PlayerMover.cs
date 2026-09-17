@@ -6,16 +6,16 @@ using UnityEngine.InputSystem;
 public class PlayerMove : MonoBehaviour
 {
     [Header("移動")]
-    [SerializeField] private float maxMoveSpeed = 8f;
-    [SerializeField] private float acceleration = 6f;
-    [SerializeField] private float deceleration = 4f;
+    [SerializeField] private float maxMoveSpeed = 8f; //移動速度の最大値
+    [SerializeField] private float acceleration = 6f; //加速量
+    [SerializeField] private float deceleration = 4f; //減速量
 
     [Header("回転")]
-    [SerializeField] private float maxRotationSpeed = 120f;
-    [SerializeField] private float rotationAcceleration = 200f;
+    [SerializeField] private float maxRotationSpeed = 120f; //回転速度の最大値（度/秒）
+    [SerializeField] private float rotationAcceleration = 200f;　//回転速度の変化量（加速度）
 
     [Header("水上の滑り（ドリフト）")]
-    [SerializeField, Range(0.1f, 10f)] private float grip = 2f;
+    [SerializeField, Range(0.1f, 10f)] private float grip = 2f; //滑りの強さ（大きいほど滑りにくくなる）
 
     [Header("壁バウンド")]
     [SerializeField] private string wallTag = "Wall"; // 壁オブジェクトに付けるタグ
@@ -74,6 +74,11 @@ public class PlayerMove : MonoBehaviour
         rb.MovePosition(rb.position + velocityDirection * speed * Time.fixedDeltaTime);
     }
 
+    //コイン取得によるマックススピードの永続的な変更（バフ／デバフ用）
+    public void ModifyMaxSpeed(float delta)
+    {
+        maxMoveSpeed = Mathf.Max(0f, maxMoveSpeed + delta);
+    }
     void OnCollisionEnter(Collision collision)
     {
         if (!collision.gameObject.CompareTag(wallTag)) return;
