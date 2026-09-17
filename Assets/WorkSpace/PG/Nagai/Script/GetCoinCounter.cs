@@ -3,10 +3,6 @@ using System.Collections;
 
 public class GetCoinCounter : MonoBehaviour
 {
-    [Header("ブースト設定")]
-    [SerializeField] private float boostMultiplier = 1.5f;
-    [SerializeField] private float boostDuration = 3f;
-
     [Header("コイン演出")]
     [SerializeField] private float rotateSpeed = 180f; // 1秒あたりの回転角度
     [SerializeField] private float respawnDelay = 5f;  // 再出現までの時間
@@ -32,8 +28,6 @@ public class GetCoinCounter : MonoBehaviour
     {
         PlayerMove mover = other.GetComponent<PlayerMove>();
         if (mover == null) return;
-
-        mover.ApplySpeedBoost(boostMultiplier, boostDuration);
 
         //取得数をカウント（コインカウンターが別途あればそちらを呼ぶ）
         //CoinManager.Instance.AddCoin();
