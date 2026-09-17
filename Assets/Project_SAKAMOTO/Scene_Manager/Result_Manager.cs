@@ -8,20 +8,26 @@ public class Result_Manager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        StartCoroutine(StartPlayresultBGM());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Gamepad.current.aButton.wasPressedThisFrame)
+        if(Gamepad.current.bButton.wasPressedThisFrame)
         {
             StartCoroutine(RoadTitleScene());
         }
-        else if(Gamepad.current.bButton.wasPressedThisFrame)
+        else if(Gamepad.current.aButton.wasPressedThisFrame)
         {
             StartCoroutine(RoadRetry());
         }
+    }
+
+    private IEnumerator StartPlayresultBGM()
+    {
+        yield return new WaitForSeconds(0.1f);
+        Sound_Manager.instance.PlayResultBGM();
     }
 
 

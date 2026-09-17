@@ -30,11 +30,22 @@ public class RaceLap_Manager : MonoBehaviour
     //private int LapStatus_3p = 0;
     //private int LapStatus_4p = 0;
 
+    private bool isFinalLap;
+
     //逆走状態を保存する定数
     private const int REVERSEIMAGE_1P = 0;
     private const int REVERSEIMAGE_2P = 1;
     //private int ReverseImage_3p = 0;
     //private int ReverseImage_4p = 0;
+
+    private const int NONEIMAGE_1P = 25;
+    private const int NONEIMAGE_2P = 26;
+
+    private const float flashingInterval=0.1f;
+
+
+    float flashingStatus = 0;//逆走時の点滅演出
+    float  flashingTimer = 0;//逆走時の点滅演出用タイマー
 
     [System.Serializable]
     public struct LapSprites
@@ -70,6 +81,7 @@ public class RaceLap_Manager : MonoBehaviour
     void Start()
     {
         IsFinish = false;
+        isFinalLap = false;
 
         LapCount_1p = 1;
         LapCount_2p = 1;
@@ -102,6 +114,14 @@ public class RaceLap_Manager : MonoBehaviour
         {
             LapCount_2p = 1;
         }
+        //if (LapCount_3p < 1)
+        //{
+        //    LapCount_3p = 1;
+        //}
+        //if (LapCount_4p < 1)
+        //{
+        //    LapCount_4p = 1;
+        //}
         //ラップ数表示状態
         if (LapStatus_1p <= 4)
         {
@@ -115,10 +135,38 @@ public class RaceLap_Manager : MonoBehaviour
         {
             LapStatus_2p = 9;
         }
-        else if (LapStatus_2p >= 14)
+        else if (LapStatus_2p >= 13)
         {
-            LapStatus_2p = 14;
+            LapStatus_2p = 13;
         }
+        //if (LapStatus_3p <= 14)
+        //{
+        //    LapStatus_3p = 14;
+        //}
+        //else if (LapStatus_3p >= 18)
+        //{
+        //    LapStatus_3p = 18;
+        //}
+        //if (LapStatus_4p <= 19)
+        //{
+        //    LapStatus_4p = 19;
+        //}
+        //else if (LapStatus_4p >= 23)
+        //{
+        //    LapStatus_4p = 23;
+        //}
+
+
+        if (LapCount_1p==5|| LapCount_2p==5)
+        {
+           if(!isFinalLap)
+            {
+                Sound_Manager.instance.PlayFinalCheerSE();
+                Sound_Manager.instance.PlayFinalLapSE();
+                isFinalLap =true;
+            }
+        }
+
 
         //**********************************************
         //ラップ数増加・減少処理はこの下に書いてください
@@ -146,6 +194,20 @@ public class RaceLap_Manager : MonoBehaviour
             ++LapStatus_2p;                 //2Pのラップ数表示状態を1加算
             ChangeLapImage(LapStatus_2p);   //表示状態を反映
         }
+        //    if (LapCount_3p != 1
+        //      && lastLap_3p != LapCount_3p
+        //      && lastLap_3p < LapCount_3p)
+        //    {
+        //        ++LapStatus_3p;                 //2Pのラップ数表示状態を1加算
+        //        ChangeLapImage(LapStatus_3p);   //表示状態を反映
+        //    }
+        //    if (LapCount_4p != 1
+        //      && lastLap_4p != LapCount_4p
+        //      && lastLap_4p < LapCount_4p)
+        //    {
+        //        ++LapStatus_4p;                 //2Pのラップ数表示状態を1加算
+        //        ChangeLapImage(LapStatus_4p);   //表示状態を反映
+        //    }
 
         //ラップ数減少の場合
         //ラップ数が初期値ではなく、
@@ -165,19 +227,53 @@ public class RaceLap_Manager : MonoBehaviour
             --LapStatus_2p;                 //2Pのラップ数表示状態を1減算
             ChangeLapImage(LapStatus_2p);   //表示状態を反映
         }
+        //     if (LapCount_3p < 14
+        //         && lastLap_3p != LapCount_3p
+        //         && lastLap_3p > LapCount_3p)
+        //     {
+        //         --LapStatus_3p;                 //1Pのラップ数表示状態を1減算
+        //         ChangeLapImage(LapStatus_3p);   //表示状態を反映
+        //     }
+        //     if (LapCount_4p < 19
+        //         && lastLap_4p != LapCount_4p
+        //         && lastLap_4p > LapCount_4p)
+        //     {
+        //         --LapStatus_4p;                 //2Pのラップ数表示状態を1減算
+        //         ChangeLapImage(LapStatus_4p);   //表示状態を反映
+        //     }
 
 
 
         //↓逆走時のUI表示処理↓
         //
-        //if (1P逆走フラグ)
-        //{
-        //    ChangeLapImage(REVERSEIMAGE_1P);
-        //}
-        //else
-        //{
-        //    ChangeLapImage(LapStatus_1p);
-        //}
+        if (Keyboard.current.enterKey.isPressed)
+        {
+            
+            if (flashingStatus == 0)
+            {
+                ChangeLapImage(REVERSEIMAGE_1P);
+                flashingTimer += Time.deltaTime;
+                if (flashingTimer > flashingInterval)
+                {
+                    ++flashingStatus;
+                }
+            }
+            else
+            {
+                ChangeLapImage(NONEIMAGE_1P);
+                flashingTimer -= Time.deltaTime;
+                if (flashingTimer < -flashingInterval)
+                {
+                    flashingStatus=0;
+                }
+            }
+        }
+        else
+        {
+            ChangeLapImage(LapStatus_1p);
+        }
+
+
         //if (2P逆走フラグ)
         //{
         //    ChangeLapImage(REVERSEIMAGE_1P);
@@ -191,8 +287,8 @@ public class RaceLap_Manager : MonoBehaviour
 
         //↓Player1P～Player4P誰かがラップ数が↓
         //↓最大ラップ数を超えた時の処理      ↓
-        if (LapCount_1p >= finalRap
-            ||LapCount_2p >= finalRap)
+        if (LapCount_1p > finalRap
+            ||LapCount_2p > finalRap)
         {
             StartCoroutine(VisibleFinishText());
         }
@@ -206,17 +302,20 @@ public class RaceLap_Manager : MonoBehaviour
     //リザルトシーンの遷移処理
     private void RoadResultScene()
     {
-        SceneManager.LoadScene("ResultScene");//リザルトシーンに遷移
+        SceneManager.LoadScene("Result");//リザルトシーンに遷移
     }
 
 
     //Finishのテキスト表示
     private IEnumerator VisibleFinishText()
     {
+        Sound_Manager.instance.StopFinalCheerSE();
+        Sound_Manager.instance.StopBGM();
+        Sound_Manager.instance.PlayGoalSE();//ゴール効果音再生
         IsFinish = true;//レース終了フラグをオン
         //finishiText.text = "FINISH!";//Finishのテキスト表示
         finishRenderer.enabled = true;//Finishの画像表示
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
         RoadResultScene();//リザルトシーンの遷移処理
     }
 

@@ -1,3 +1,4 @@
+using NUnit.Framework.Constraints;
 using System;
 using System.Collections;
 using TMPro; //TextMeshProを使うために必要 
@@ -10,8 +11,6 @@ public class RaceTime_Manager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI gameTimerText;//ゲーム内時間用テキスト
 
-    //カウントダウン用の画像を保存する配列
-    [SerializeField] private Sprite[] timerSprites;
 
     private string gametimerStr;//gameTimerの文字列を編集するための変数
 
@@ -30,9 +29,14 @@ public class RaceTime_Manager : MonoBehaviour
 
     public float gameTimer = 0f;
 
+
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        countdownRenderer.enabled = false;
+
         //RaceLap_Managerがついたオブジェクトを探し、
         //RaceLap_Managerの機能をraceLap_managerに入れる
         raceLap_manager = FindAnyObjectByType<RaceLap_Manager>();
@@ -79,23 +83,31 @@ public class RaceTime_Manager : MonoBehaviour
     //カウントダウン処理
     private IEnumerator CountDown()
     {
-        countdownText.text = "3";                 //テキストの場合
-        //countdownRenderer = countdown_3_Image;////画像の場合
+        Sound_Manager.instance.PlayStartSE();
+        Sound_Manager.instance.PlayBeforeCheerSE();
+        yield return new WaitForSeconds(5f);
+        Sound_Manager.instance.PlayCountDownSE();
+        //countdownText.text = "3";                 //テキストの場合
+        countdownRenderer.enabled = true;
+        countdownRenderer.sprite = countdown_3_Image;//画像の場合
         yield return new WaitForSeconds(1f);
 
-        countdownText.text = "2";                 //テキストの場合
-        //countdownRenderer = countdown_2_Image;////画像の場合
+        //countdownText.text = "2";                 //テキストの場合
+        countdownRenderer.sprite = countdown_2_Image;////画像の場合
         yield return new WaitForSeconds(1f);
 
-        countdownText.text = "1";                 //テキストの場合
-        //countdownRenderer = countdown_1_Image;////画像の場合
+        //countdownText.text = "1";                 //テキストの場合
+        countdownRenderer.sprite = countdown_1_Image;////画像の場合
         yield return new WaitForSeconds(1f);
 
-        countdownText.text = "START!";                //テキストの場合
-        //countdownRenderer = countdown_start_Image;////画像の場合
+        //countdownText.text = "START!";                //テキストの場合
+        countdownRenderer.sprite = countdown_start_Image;////画像の場合
         IsStart = true;
 
         yield return new WaitForSeconds(1f);
+        countdownRenderer.enabled =false;
+        Sound_Manager.instance.StopBeforeCheerSE();
+        Sound_Manager.instance.PlayGameBGM();
         countdownText.text = "";
     }
 }
