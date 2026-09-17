@@ -38,6 +38,15 @@ public class RaceLap_Manager : MonoBehaviour
     //private int ReverseImage_3p = 0;
     //private int ReverseImage_4p = 0;
 
+    private const int NONEIMAGE_1P = 25;
+    private const int NONEIMAGE_2P = 26;
+
+    private const float flashingInterval=0.1f;
+
+
+    float flashingStatus = 0;//逆走時の点滅演出
+    float  flashingTimer = 0;//逆走時の点滅演出用タイマー
+
     [System.Serializable]
     public struct LapSprites
     {
@@ -105,6 +114,14 @@ public class RaceLap_Manager : MonoBehaviour
         {
             LapCount_2p = 1;
         }
+        //if (LapCount_3p < 1)
+        //{
+        //    LapCount_3p = 1;
+        //}
+        //if (LapCount_4p < 1)
+        //{
+        //    LapCount_4p = 1;
+        //}
         //ラップ数表示状態
         if (LapStatus_1p <= 4)
         {
@@ -118,13 +135,29 @@ public class RaceLap_Manager : MonoBehaviour
         {
             LapStatus_2p = 9;
         }
-        else if (LapStatus_2p >= 14)
+        else if (LapStatus_2p >= 13)
         {
-            LapStatus_2p = 14;
+            LapStatus_2p = 13;
         }
+        //if (LapStatus_3p <= 14)
+        //{
+        //    LapStatus_3p = 14;
+        //}
+        //else if (LapStatus_3p >= 18)
+        //{
+        //    LapStatus_3p = 18;
+        //}
+        //if (LapStatus_4p <= 19)
+        //{
+        //    LapStatus_4p = 19;
+        //}
+        //else if (LapStatus_4p >= 23)
+        //{
+        //    LapStatus_4p = 23;
+        //}
 
 
-        if(LapCount_1p==5|| LapCount_2p==5)
+        if (LapCount_1p==5|| LapCount_2p==5)
         {
            if(!isFinalLap)
             {
@@ -161,6 +194,20 @@ public class RaceLap_Manager : MonoBehaviour
             ++LapStatus_2p;                 //2Pのラップ数表示状態を1加算
             ChangeLapImage(LapStatus_2p);   //表示状態を反映
         }
+        //    if (LapCount_3p != 1
+        //      && lastLap_3p != LapCount_3p
+        //      && lastLap_3p < LapCount_3p)
+        //    {
+        //        ++LapStatus_3p;                 //2Pのラップ数表示状態を1加算
+        //        ChangeLapImage(LapStatus_3p);   //表示状態を反映
+        //    }
+        //    if (LapCount_4p != 1
+        //      && lastLap_4p != LapCount_4p
+        //      && lastLap_4p < LapCount_4p)
+        //    {
+        //        ++LapStatus_4p;                 //2Pのラップ数表示状態を1加算
+        //        ChangeLapImage(LapStatus_4p);   //表示状態を反映
+        //    }
 
         //ラップ数減少の場合
         //ラップ数が初期値ではなく、
@@ -180,19 +227,53 @@ public class RaceLap_Manager : MonoBehaviour
             --LapStatus_2p;                 //2Pのラップ数表示状態を1減算
             ChangeLapImage(LapStatus_2p);   //表示状態を反映
         }
+        //     if (LapCount_3p < 14
+        //         && lastLap_3p != LapCount_3p
+        //         && lastLap_3p > LapCount_3p)
+        //     {
+        //         --LapStatus_3p;                 //1Pのラップ数表示状態を1減算
+        //         ChangeLapImage(LapStatus_3p);   //表示状態を反映
+        //     }
+        //     if (LapCount_4p < 19
+        //         && lastLap_4p != LapCount_4p
+        //         && lastLap_4p > LapCount_4p)
+        //     {
+        //         --LapStatus_4p;                 //2Pのラップ数表示状態を1減算
+        //         ChangeLapImage(LapStatus_4p);   //表示状態を反映
+        //     }
 
 
 
         //↓逆走時のUI表示処理↓
         //
-        //if (1P逆走フラグ)
-        //{
-        //    ChangeLapImage(REVERSEIMAGE_1P);
-        //}
-        //else
-        //{
-        //    ChangeLapImage(LapStatus_1p);
-        //}
+        if (Keyboard.current.enterKey.isPressed)
+        {
+            
+            if (flashingStatus == 0)
+            {
+                ChangeLapImage(REVERSEIMAGE_1P);
+                flashingTimer += Time.deltaTime;
+                if (flashingTimer > flashingInterval)
+                {
+                    ++flashingStatus;
+                }
+            }
+            else
+            {
+                ChangeLapImage(NONEIMAGE_1P);
+                flashingTimer -= Time.deltaTime;
+                if (flashingTimer < -flashingInterval)
+                {
+                    flashingStatus=0;
+                }
+            }
+        }
+        else
+        {
+            ChangeLapImage(LapStatus_1p);
+        }
+
+
         //if (2P逆走フラグ)
         //{
         //    ChangeLapImage(REVERSEIMAGE_1P);

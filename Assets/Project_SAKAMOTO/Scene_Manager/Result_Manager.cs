@@ -8,7 +8,7 @@ public class Result_Manager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Sound_Manager.instance.PlayResultBGM();
+        StartCoroutine(StartPlayresultBGM());
     }
 
     // Update is called once per frame
@@ -24,16 +24,22 @@ public class Result_Manager : MonoBehaviour
         }
     }
 
+    private IEnumerator StartPlayresultBGM()
+    {
+        yield return new WaitForSeconds(0.1f);
+        Sound_Manager.instance.PlayResultBGM();
+    }
+
 
     private IEnumerator RoadTitleScene()
     {
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene("TitleS");//リザルトシーンに遷移
+        SceneManager.LoadScene("Title");//リザルトシーンに遷移
     }
 
     private IEnumerator RoadRetry()
     {
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene("GameS");//ゲームシーンに遷移（リトライ）
+        SceneManager.LoadScene("Game");//ゲームシーンに遷移（リトライ）
     }
 }
