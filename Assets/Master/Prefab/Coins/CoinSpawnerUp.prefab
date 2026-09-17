@@ -47,8 +47,9 @@ MonoBehaviour:
   coinPrefabBuff: {fileID: 6806087914617136570, guid: 817ac57cac024fb40b4d4cb1f0aed87d, type: 3}
   coinPrefabDebuff: {fileID: 2924732208964076854, guid: aab15ec135a1c6445a7f2c4c0e39bd20, type: 3}
   buffSpawnChance: 0.5
+  spawnCount: 2
   positionMinX: -18
   positionMaxX: 18
   positionMinZ: 3
   positionMaxZ: 8
-  positiony: 1.2
+  positionY: 1
