@@ -80,6 +80,9 @@ PrefabInstance:
       insertIndex: 1
       addedObject: {fileID: 9199710593187282920}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: db183a676e95a9d4783d46caf92b9ab4, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 8649738259030208903}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: db183a676e95a9d4783d46caf92b9ab4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6379212992668701365}
   m_SourcePrefab: {fileID: 100100000, guid: db183a676e95a9d4783d46caf92b9ab4, type: 3}
@@ -102,6 +105,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Coin
   coinType: 1
   speedChangeAmount: 1
+--- !u!114 &8649738259030208903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2924732208964076854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5512b24cdce7b74eafe97d35d746b18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GetCoinCounter
+  rotateSpeed: 180
+  respawnDelay: 5
+  pickupEffect: {fileID: 8771972552311404799, guid: bbf9e36a48d6c5648a13889afab076fd, type: 3}
+  pickupSound: {fileID: 8300000, guid: 5dd96a9ffee6d30479dea8a4700194b6, type: 3}
 --- !u!65 &6379212992668701365
 BoxCollider:
   m_ObjectHideFlags: 0
