@@ -32,6 +32,8 @@ public class Sound_Manager : MonoBehaviour
     [Header("スタート前のカウントダウン音")][SerializeField] public AudioClip SE_CountDown;
     [Header("スタート音")][SerializeField] public AudioClip SE_Start;
 
+    [Header("ラップ音")][SerializeField] public AudioClip SE_Lap;
+
     [Header("最終ラップ突入時の歓声")][SerializeField] public AudioClip SE_FinalCheer;
     [Header("最終ラップ突入音")][SerializeField] public AudioClip SE_FinalLap;
     [Header("ゴール音")][SerializeField] public AudioClip SE_Goal;
@@ -91,6 +93,11 @@ public class Sound_Manager : MonoBehaviour
     public void PlayStartSE()
     {
         SESource.PlayOneShot(SE_Start);
+    }
+
+    public void PlayLapSE()
+    {
+        SESource.PlayOneShot(SE_Lap);
     }
 
     public void PlayFinalCheerSE()

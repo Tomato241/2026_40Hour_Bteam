@@ -345,6 +345,7 @@ GameObject:
   m_Component:
   - component: {fileID: 87143297}
   - component: {fileID: 87143296}
+  - component: {fileID: 87143298}
   m_Layer: 0
   m_Name: GoalLine_Back
   m_TagString: GoalBack
@@ -388,6 +389,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &87143298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87143295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 461742c9c9543344d9a64881094e6764, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Winner_Manager
 --- !u!1 &457198443
 GameObject:
   m_ObjectHideFlags: 0
@@ -948,7 +961,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f624d001f34f5a040ade416be84a860e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GoalLine_Counter
-  hasPassFront: 0
+  hasPassFront: 1
   hasPassBack: 0
   isFirst: 0
 --- !u!212 &2002446398 stripped
@@ -1212,6 +1225,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3406387477978999913, guid: 2255a9323fbac2648bbf3796f8cd8448, type: 3}
+      propertyPath: finalRap
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3406387477978999913, guid: 2255a9323fbac2648bbf3796f8cd8448, type: 3}
       propertyPath: finishImage
       value: 
@@ -1610,6 +1627,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2421490480343713040, guid: ddccf0a01c1fd324696cc6edec2f6bac, type: 3}
+      propertyPath: SE_Lap
+      value: 
+      objectReference: {fileID: 8300000, guid: 5b61a23921f819b44921a053a4bd2dfc, type: 3}
     - target: {fileID: 6750005243264621707, guid: ddccf0a01c1fd324696cc6edec2f6bac, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
