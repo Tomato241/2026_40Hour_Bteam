@@ -12,10 +12,10 @@ public class RaceLap_Manager : MonoBehaviour
     public bool IsFinish;
 
 
-    public int LapCount_1p = 0;//1Pのラップ数カウント用変数
-    public int LapCount_2p = 0;//2Pのラップ数カウント用変数
-    public int LapCount_3p = 0;//3Pのラップ数カウント用変数
-    public int LapCount_4p = 0;//4Pのラップ数カウント用変数
+    public static int LapCount_1p = 0;//1Pのラップ数カウント用変数
+    public static int LapCount_2p = 0;//2Pのラップ数カウント用変数
+    public static int LapCount_3p = 0;//3Pのラップ数カウント用変数
+    public static int LapCount_4p = 0;//4Pのラップ数カウント用変数
 
 
     private int lastLap_1p = 0;
@@ -47,6 +47,9 @@ public class RaceLap_Manager : MonoBehaviour
     float flashingStatus = 0;//逆走時の点滅演出
     float  flashingTimer = 0;//逆走時の点滅演出用タイマー
 
+    [Header("最大ラップ数")][SerializeField] private int finalRap;
+
+
     [System.Serializable]
     public struct LapSprites
     {
@@ -70,7 +73,7 @@ public class RaceLap_Manager : MonoBehaviour
     [Header("3Pのラップ数のテキスト")][SerializeField] private TextMeshProUGUI lapCountText_3P;//3Pのラップ数表示用変数
     [Header("4Pのラップ数のテキスト")][SerializeField] private TextMeshProUGUI lapCountText_4P;//4Pのラップ数表示用変数
 
-    [Header("最大ラップ数")][SerializeField] private int finalRap;
+    
 
 
     [Header("Finishのテキスト")][SerializeField] private TextMeshProUGUI finishiText; //Finishの表示用変数
@@ -302,7 +305,7 @@ public class RaceLap_Manager : MonoBehaviour
     //リザルトシーンの遷移処理
     private void RoadResultScene()
     {
-        SceneManager.LoadScene("Result");//リザルトシーンに遷移
+        SceneManager.LoadScene("ResultScene");//リザルトシーンに遷移
     }
 
 

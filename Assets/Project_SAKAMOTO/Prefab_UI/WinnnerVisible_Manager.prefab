@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7977305885793272646
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2330663088744688519}
+  - component: {fileID: 5865202483563939468}
+  m_Layer: 0
+  m_Name: WinnnerVisible_Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2330663088744688519
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7977305885793272646}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: -0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5865202483563939468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7977305885793272646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c140c5b752019e46b0cb36ab2860bf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Winner_Visibler
+  winnnerObject: {fileID: 7494323928327796251, guid: c14a8ad5947ba2c4eb5383bf0a938515, type: 3}
+  winnnerSpriteRenderer: {fileID: 7229568551209563188, guid: c14a8ad5947ba2c4eb5383bf0a938515, type: 3}
+  winnerSprite: {fileID: 21300000, guid: ccd500d9c1695c74b9d3d25500a60e50, type: 3}
+  characterSprites:
+  - {fileID: 21300000, guid: 6a1ea429dbf01a44f990baf273488363, type: 3}
+  - {fileID: 21300000, guid: 507f35046044c104892c411a3196a33c, type: 3}
+  animationDuration: 0.5

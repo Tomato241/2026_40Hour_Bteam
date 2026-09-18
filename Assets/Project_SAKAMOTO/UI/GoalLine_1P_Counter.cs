@@ -7,8 +7,6 @@ public class GoalLine_1P_Counter : MonoBehaviour
 
     [SerializeField] private bool isFirst;//初回通過時のフラグ
 
-    RaceLap_Manager racelap_manager;
-
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -17,7 +15,6 @@ public class GoalLine_1P_Counter : MonoBehaviour
         hasPassFront = false;
         hasPassBack = false;
         isFirst = true;     //初回通過フラグをオン
-        racelap_manager =FindAnyObjectByType<RaceLap_Manager>();
     }
 
     // Update is called once per frame
@@ -46,7 +43,7 @@ public class GoalLine_1P_Counter : MonoBehaviour
             else if (hasPassBack)
             {
 
-                --racelap_manager.LapCount_1p;//1Pのラップ数を減算
+                --RaceLap_Manager.LapCount_1p;//1Pのラップ数を減算
                 hasPassFront = false;    //フロントポイント通過フラグをオフ
                 hasPassBack = false;     //バックポイント通過フラグをオフ
                 return;                  //処理が条件にかからないようにここで終了する
@@ -77,13 +74,22 @@ public class GoalLine_1P_Counter : MonoBehaviour
                 //ゴールラインの通過が2回目以降なら
                 else
                 {
-                    ++racelap_manager.LapCount_1p;//1Pのラップ数を加算
+                    ++RaceLap_Manager.LapCount_1p;//1Pのラップ数を加算
                     hasPassBack = false;          //バックポイント通過フラグをオフ
                     hasPassFront = false;         //フロントポイント通過フラグをオフ
                     return;             //処理が条件にかからないようにここで終了する
                 }
             }
-        }
-    }
 
+
+
+        }
+
+
+
+
+
+
+
+    }
 }

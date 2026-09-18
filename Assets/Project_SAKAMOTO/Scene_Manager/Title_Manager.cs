@@ -8,7 +8,7 @@ public class Title_Manager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Sound_Manager.instance.PlayTitleBGM();
+        StartCoroutine(StartPlaTitleBGM());
     }
 
     // Update is called once per frame
@@ -24,6 +24,12 @@ public class Title_Manager : MonoBehaviour
     {
         Sound_Manager.instance.GameStartButtonSE();
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene("Game");//ゲームシーンに遷移（リトライ）
+        //SceneManager.LoadScene("Game");//ゲームシーンに遷移（リトライ）
+    }
+
+    private IEnumerator StartPlaTitleBGM()
+    {
+        yield return new WaitForSeconds(0.1f);
+        Sound_Manager.instance.PlayTitleBGM();
     }
 }
