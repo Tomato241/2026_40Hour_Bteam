@@ -249,7 +249,7 @@ public class RaceLap_Manager : MonoBehaviour
 
         //↓逆走時のUI表示処理↓
         //
-        if (Keyboard.current.enterKey.isPressed)
+        if (PlayerMove.IsReverse)
         {
             
             if (flashingStatus == 0)

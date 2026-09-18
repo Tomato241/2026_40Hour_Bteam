@@ -41,6 +41,12 @@ public class PlayerMove : MonoBehaviour
     // サウンド状態管理フラグ
     private bool isEngineSoundPlaying = false;
 
+    [SerializeField]Vector3 playerAngles = Vector3.zero;//プレイヤーの角度を記録する変数
+    public static bool IsReverse = false;//逆走状態を保存するフラグ
+
+    [Header("逆走の最小判定角度")][SerializeField] private float minReverseAngle;
+    [Header("逆走の最大判定角度")][SerializeField] private float maxReverseAngle;
+
     // 外部から呼び出してコントローラーを割り当てる
     public void AssignGamepad(Gamepad gamepad) => pad = gamepad;
 
@@ -56,6 +62,7 @@ public class PlayerMove : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         velocityDirection = transform.forward;
         pad ??= Gamepad.current; // 未割り当てなら暫定でcurrentを使う
+        IsReverse = false;
     }
 
     void Start()
@@ -112,6 +119,25 @@ public class PlayerMove : MonoBehaviour
 
         float targetRotation = pad.leftStick.ReadValue().x * maxRotationSpeed;
         rotationSpeed = Mathf.MoveTowards(rotationSpeed, targetRotation, rotationAcceleration * Time.deltaTime);
+
+
+        playerAngles = transform.rotation.eulerAngles;//プレイヤーの角度を保存する
+
+        // 2. 角度を -180 〜 180 度の範囲に変換
+        if (playerAngles.y > 180f)
+        {
+            playerAngles.y -= 360f;
+        }
+        if (pad.aButton.isPressed
+           && Mathf.Abs(playerAngles.y) > minReverseAngle
+           && Mathf.Abs(playerAngles.y) < maxReverseAngle)
+        {       
+            IsReverse = true;
+        }
+        else
+        {
+            IsReverse = false;
+        }
     }
 
     void FixedUpdate()
