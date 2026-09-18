@@ -28,6 +28,9 @@ public class PlayerMove : MonoBehaviour
     private float rotationSpeed;
     private Vector3 velocityDirection;
 
+    // レース開始フラグの状態を読み取る変数（カウントダウン中は操作を受け付けないため）
+    private RaceTime_Manager raceTime_manager;
+
     // コイン取得によるスピードブースト
     private float boostMultiplier = 1f;
     private float boostTimer = 0f;
@@ -52,9 +55,29 @@ public class PlayerMove : MonoBehaviour
         pad ??= Gamepad.current; // 未割り当てなら暫定でcurrentを使う
     }
 
+    void Start()
+    {
+        // RaceTime_Managerがついたオブジェクトを探し、IsStartの状態を参照できるようにする
+        raceTime_manager = FindAnyObjectByType<RaceTime_Manager>();
+    }
+
     void Update()
     {
-        if (pad == null) return;
+        // レースがまだ始まっていない（カウントダウン中）は入力を受け付けない
+        bool canControl = raceTime_manager == null || raceTime_manager.IsStart;
+
+        if (pad == null || !canControl)
+        {
+            // 操作不可の間はアクセル入力を無視し、エンジン音や速度は慣性のみで処理する
+            HandleEngineSound(false);
+
+            float targetSpeedIdle = 0f;
+            speed = Mathf.MoveTowards(speed, targetSpeedIdle, deceleration * Time.deltaTime);
+
+            float targetRotationIdle = 0f;
+            rotationSpeed = Mathf.MoveTowards(rotationSpeed, targetRotationIdle, rotationAcceleration * Time.deltaTime);
+            return;
+        }
 
         // ブーストタイマーの更新
         if (boostTimer > 0f)
