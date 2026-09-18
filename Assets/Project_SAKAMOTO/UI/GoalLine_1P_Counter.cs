@@ -1,11 +1,14 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GoalLine_1P_Counter : MonoBehaviour
 {
-   [SerializeField] private bool hasPassFront;//フロントポイント通過フラグ
-   [SerializeField] private bool hasPassBack;//バックポイント通過フラグ
+    [SerializeField] private bool hasPassFront;//フロントポイント通過フラグ
+    [SerializeField] private bool hasPassBack;//バックポイント通過フラグ
 
     [SerializeField] private bool isFirst;//初回通過時のフラグ
+
+    [SerializeField] private CoinSpawner[] coinSpawner; // CoinSpawnerの参照
 
 
 
@@ -20,7 +23,7 @@ public class GoalLine_1P_Counter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     //ゴール判定処理
@@ -68,7 +71,7 @@ public class GoalLine_1P_Counter : MonoBehaviour
                 //ゴールラインの通過が初めてなら
                 if (isFirst)
                 {
-                    isFirst=false;   //初回通過フラグをオフ
+                    isFirst = false;   //初回通過フラグをオフ
                     return;
                 }
                 //ゴールラインの通過が2回目以降なら
@@ -77,19 +80,21 @@ public class GoalLine_1P_Counter : MonoBehaviour
                     ++RaceLap_Manager.LapCount_1p;//1Pのラップ数を加算
                     hasPassBack = false;          //バックポイント通過フラグをオフ
                     hasPassFront = false;         //フロントポイント通過フラグをオフ
+                    if (RaceLap_Manager.LapCount_1p >= RaceLap_Manager.LapCount_2p)
+                    {
+                        SpawnCoinsAll();
+                    }
                     return;             //処理が条件にかからないようにここで終了する
                 }
             }
-
-
-
         }
-
-
-
-
-
-
-
+        void SpawnCoinsAll()
+        {
+            foreach (var spawner in coinSpawner)
+            {
+                spawner.SpawnCoins();
+            }
+        }
     }
 }
+     

@@ -245,7 +245,11 @@ MonoBehaviour:
   hasPassFront: 0
   hasPassBack: 0
   isFirst: 0
-  coinSpawner: []
+  coinSpawner:
+  - {fileID: 6729827964347431870, guid: 655ce00f893e0234280cde918eb9b5f4, type: 3}
+  - {fileID: 8604470974507253912, guid: 57e6c914ccbe42d40a89efad0adb8781, type: 3}
+  - {fileID: 5917627557483498576, guid: 8518b77a8c9f8ff408d44b85ba967cbd, type: 3}
+  - {fileID: 6549871518096477312, guid: e1f9750af832d604fa9100e071fc330f, type: 3}
 --- !u!65 &3714280833657731124
 BoxCollider:
   m_ObjectHideFlags: 0
