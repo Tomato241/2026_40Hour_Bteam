@@ -73,7 +73,7 @@ public class GoalLine_2P_Counter : MonoBehaviour
                     hasPassBack = false;          //バックポイント通過フラグをオフ
                     hasPassFront = false;         //フロントポイント通過フラグをオフ
 
-                    if (racelap_manager.LapCount_2p >= racelap_manager.LapCount_1p)
+                    if (RaceLap_Manager.LapCount_2p >= RaceLap_Manager.LapCount_1p)
                     {
                         SpawnCoinsAll();
                     }

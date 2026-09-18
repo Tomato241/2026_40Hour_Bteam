@@ -22,10 +22,10 @@ public class SceneChanger : MonoBehaviour
             }
 
             //今いるシーンがMainSceneならResultSceneに遷移する
-            if (SceneManager.GetActiveScene().name == "MainScene" && Gamepad.current.bButton.wasPressedThisFrame)
-            {
-                SceneManager.LoadScene("ResultScene");
-            }
+            //if (SceneManager.GetActiveScene().name == "MainScene" && Gamepad.current.bButton.wasPressedThisFrame)
+            //{
+            //    SceneManager.LoadScene("ResultScene");
+            //}
 
             //今いるシーンがResultSceneならTitleSceneに遷移する
             if (SceneManager.GetActiveScene().name == "ResultScene" && Gamepad.current.aButton.wasPressedThisFrame)

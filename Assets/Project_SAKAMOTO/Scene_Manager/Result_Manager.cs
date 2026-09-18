@@ -35,13 +35,11 @@ public class Result_Manager : MonoBehaviour
     {
         Player_Info.WinnerData = null;
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene("Title");//リザルトシーンに遷移
     }
 
     private IEnumerator RoadRetry()
     {
         Player_Info.WinnerData = null;
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene("Game");//ゲームシーンに遷移（リトライ）
     }
 }

@@ -23,7 +23,7 @@ public class Winner_Visibler : MonoBehaviour
     {
         if (Player_Info.WinnerData == null)
         {
-            Debug.LogError("勝者のデータが空っぽ（null）です！");
+            //Debug.LogError("勝者のデータが空っぽ（null）です！");
             return;
         }
         // 💡 保存された純粋なデータからIDと名前を読み取る（オブジェクトが消えていても大丈夫！）
