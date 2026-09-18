@@ -22,6 +22,9 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float bounceForce = 5f;  // 跳ね返る強さ
     [SerializeField, Range(0f, 1f)] private float bounceSpeedRetention = 0.5f; // 跳ね返り後に速度を何割残すか
 
+    //エフェクトの再生
+    [SerializeField] private ParticleSystem engineEffect;
+
     private Rigidbody rb;
     private Gamepad pad;
     private float speed;
@@ -90,6 +93,18 @@ public class PlayerMove : MonoBehaviour
 
         // エンジン音の再生・停止制御
         HandleEngineSound(isAccelerating);
+        // エンジンエフェクトの再生・停止制御
+        if (engineEffect != null)
+        {
+            if (isAccelerating && !engineEffect.isPlaying)
+            {
+                engineEffect.Play();
+            }
+            else if (!isAccelerating && engineEffect.isPlaying)
+            {
+                engineEffect.Stop();
+            }
+        }
 
         // 移動・回転の計算
         float targetSpeed = (isAccelerating ? maxMoveSpeed : 0f) * boostMultiplier;
@@ -137,6 +152,8 @@ public class PlayerMove : MonoBehaviour
     public void ModifyMaxSpeed(float delta)
     {
         maxMoveSpeed = Mathf.Max(0f, maxMoveSpeed + delta);
+        //速度は一定以上に下がらないようにする
+        speed = Mathf.Min(speed, maxMoveSpeed);
     }
 
     void OnCollisionEnter(Collision collision)

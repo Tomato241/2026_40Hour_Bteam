@@ -1,5 +1,71 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1399101483202439621
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2969382085756271599}
+    m_Modifications:
+    - target: {fileID: 2402814601066765488, guid: 6fbad2b6737935345aa00fea53c3841c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7524854542496582187, guid: 6fbad2b6737935345aa00fea53c3841c, type: 3}
+      propertyPath: m_Name
+      value: Effect_WaterSplash
+      objectReference: {fileID: 0}
+    - target: {fileID: 8351194250015237020, guid: 6fbad2b6737935345aa00fea53c3841c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8351194250015237020, guid: 6fbad2b6737935345aa00fea53c3841c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8351194250015237020, guid: 6fbad2b6737935345aa00fea53c3841c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8351194250015237020, guid: 6fbad2b6737935345aa00fea53c3841c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8351194250015237020, guid: 6fbad2b6737935345aa00fea53c3841c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8351194250015237020, guid: 6fbad2b6737935345aa00fea53c3841c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8351194250015237020, guid: 6fbad2b6737935345aa00fea53c3841c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8351194250015237020, guid: 6fbad2b6737935345aa00fea53c3841c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8351194250015237020, guid: 6fbad2b6737935345aa00fea53c3841c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8351194250015237020, guid: 6fbad2b6737935345aa00fea53c3841c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6fbad2b6737935345aa00fea53c3841c, type: 3}
+--- !u!4 &6958058737205611097 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8351194250015237020, guid: 6fbad2b6737935345aa00fea53c3841c, type: 3}
+  m_PrefabInstance: {fileID: 1399101483202439621}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3368661989312453636
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66,7 +132,10 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 1900ba273e6696547a894839331e4d84, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: e3f18ebff19448048bd088e4215bb263, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6958058737205611097}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e3f18ebff19448048bd088e4215bb263, type: 3}
       insertIndex: -1
@@ -150,15 +219,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4264ff75b9e4854a9f0f26dce22c465, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMove
-  maxMoveSpeed: 8
-  acceleration: 6
-  deceleration: 4
-  maxRotationSpeed: 120
-  rotationAcceleration: 200
-  grip: 2
+  maxMoveSpeed: 10
+  acceleration: 7
+  deceleration: 6
+  maxRotationSpeed: 110
+  rotationAcceleration: 80
+  grip: 1.5
   wallTag: Wall
-  bounceForce: 5
+  bounceForce: 6
   bounceSpeedRetention: 0.5
+  engineEffect: {fileID: 0}
 --- !u!114 &3144591255796009203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,3 +270,8 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 0.8, z: 2.2}
   m_Center: {x: 0, y: 0.4, z: -0.35}
+--- !u!4 &2969382085756271599 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e3f18ebff19448048bd088e4215bb263, type: 3}
+  m_PrefabInstance: {fileID: 3368661989312453636}
+  m_PrefabAsset: {fileID: 0}

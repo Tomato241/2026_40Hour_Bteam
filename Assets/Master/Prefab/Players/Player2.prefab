@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2654936297032414351
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7276078866863585182}
+    m_Modifications:
+    - target: {fileID: 7524854542496582187, guid: 6fbad2b6737935345aa00fea53c3841c, type: 3}
+      propertyPath: m_Name
+      value: Effect_WaterSplash
+      objectReference: {fileID: 0}
+    - target: {fileID: 8351194250015237020, guid: 6fbad2b6737935345aa00fea53c3841c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8351194250015237020, guid: 6fbad2b6737935345aa00fea53c3841c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8351194250015237020, guid: 6fbad2b6737935345aa00fea53c3841c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8351194250015237020, guid: 6fbad2b6737935345aa00fea53c3841c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8351194250015237020, guid: 6fbad2b6737935345aa00fea53c3841c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8351194250015237020, guid: 6fbad2b6737935345aa00fea53c3841c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8351194250015237020, guid: 6fbad2b6737935345aa00fea53c3841c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8351194250015237020, guid: 6fbad2b6737935345aa00fea53c3841c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8351194250015237020, guid: 6fbad2b6737935345aa00fea53c3841c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8351194250015237020, guid: 6fbad2b6737935345aa00fea53c3841c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6fbad2b6737935345aa00fea53c3841c, type: 3}
+--- !u!4 &6286282438752147219 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8351194250015237020, guid: 6fbad2b6737935345aa00fea53c3841c, type: 3}
+  m_PrefabInstance: {fileID: 2654936297032414351}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7166188326718541941
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66,7 +128,10 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: e57c30e718c91bd4f95f7faab33c44b2, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: e3f18ebff19448048bd088e4215bb263, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6286282438752147219}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e3f18ebff19448048bd088e4215bb263, type: 3}
       insertIndex: -1
@@ -84,6 +149,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 3714280833657731124}
   m_SourcePrefab: {fileID: 100100000, guid: e3f18ebff19448048bd088e4215bb263, type: 3}
+--- !u!4 &7276078866863585182 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e3f18ebff19448048bd088e4215bb263, type: 3}
+  m_PrefabInstance: {fileID: 7166188326718541941}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8048499337783749924 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e3f18ebff19448048bd088e4215bb263, type: 3}
@@ -150,15 +220,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4264ff75b9e4854a9f0f26dce22c465, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMove
-  maxMoveSpeed: 8
-  acceleration: 6
-  deceleration: 4
-  maxRotationSpeed: 120
-  rotationAcceleration: 200
-  grip: 2
+  maxMoveSpeed: 10
+  acceleration: 7
+  deceleration: 6
+  maxRotationSpeed: 110
+  rotationAcceleration: 80
+  grip: 1.5
   wallTag: Wall
-  bounceForce: 5
+  bounceForce: 6
   bounceSpeedRetention: 0.5
+  engineEffect: {fileID: 0}
 --- !u!114 &5165678920788126837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,6 +245,7 @@ MonoBehaviour:
   hasPassFront: 0
   hasPassBack: 0
   isFirst: 0
+  coinSpawner: []
 --- !u!65 &3714280833657731124
 BoxCollider:
   m_ObjectHideFlags: 0

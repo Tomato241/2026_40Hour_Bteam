@@ -38,7 +38,7 @@ public class GetCoinCounter : MonoBehaviour
         }
         if (pickupSound != null)
         {
-            AudioSource.PlayClipAtPoint(pickupSound, transform.position);
+            AudioSource.PlayClipAtPoint(pickupSound, Camera.main.transform.position,1.0f);
         }
 
         StartCoroutine(RespawnAfterDelay());

@@ -52,10 +52,10 @@ MonoBehaviour:
   lapspriteList:
   - objectName: "\u9006\u8D70\u72B6\u614B_1P"
     targetSpriterenderer: {fileID: 604023748941956602, guid: 4792d9457c64e274a9200b99f58f7dec, type: 3}
-    lapSprite: {fileID: 21300000, guid: e1c1f823709a1854aa91b06a12e3fa7c, type: 3}
+    lapSprite: {fileID: 21300000, guid: f5571d13ace7ac74b8819fc7ab64fc8c, type: 3}
   - objectName: "\u9006\u8D70\u72B6\u614B_2P"
     targetSpriterenderer: {fileID: 9043058547414679414, guid: dafbfafe5b08ca74eaae2798de308eca, type: 3}
-    lapSprite: {fileID: 21300000, guid: 0e547ddcc3664db4c915c1da1248ad4f, type: 3}
+    lapSprite: {fileID: 21300000, guid: bceacfc65f58e474fb6593cb76a1a7bc, type: 3}
   - objectName: "\u9006\u8D70\u72B6\u614B_3P"
     targetSpriterenderer: {fileID: 604023748941956602, guid: 4792d9457c64e274a9200b99f58f7dec, type: 3}
     lapSprite: {fileID: 21300000, guid: e1c1f823709a1854aa91b06a12e3fa7c, type: 3}
@@ -64,34 +64,34 @@ MonoBehaviour:
     lapSprite: {fileID: 21300000, guid: 0e547ddcc3664db4c915c1da1248ad4f, type: 3}
   - objectName: Lap1_1P
     targetSpriterenderer: {fileID: 604023748941956602, guid: 4792d9457c64e274a9200b99f58f7dec, type: 3}
-    lapSprite: {fileID: 21300000, guid: 92a41c98779ad57449d65c6fe31bf1fe, type: 3}
+    lapSprite: {fileID: 21300000, guid: e314b30a4b3014a488da810849744609, type: 3}
   - objectName: Lap2_1P
     targetSpriterenderer: {fileID: 604023748941956602, guid: 4792d9457c64e274a9200b99f58f7dec, type: 3}
-    lapSprite: {fileID: 21300000, guid: 36a76ce6a84170b4aad4ef84e7dcffa5, type: 3}
+    lapSprite: {fileID: 21300000, guid: 3dfb9734f2d96a94cb6ec9ab236f6eac, type: 3}
   - objectName: Lap3_1P
     targetSpriterenderer: {fileID: 604023748941956602, guid: 4792d9457c64e274a9200b99f58f7dec, type: 3}
-    lapSprite: {fileID: 21300000, guid: a8a1e9984935eff489ace84f1eeefcae, type: 3}
+    lapSprite: {fileID: 21300000, guid: 28560b3a2b5b7ca45a8b6579df3341f8, type: 3}
   - objectName: Lap4_1P
     targetSpriterenderer: {fileID: 604023748941956602, guid: 4792d9457c64e274a9200b99f58f7dec, type: 3}
-    lapSprite: {fileID: 21300000, guid: ecdcea8f3fd51b44c82b21e9c0a9d815, type: 3}
+    lapSprite: {fileID: 21300000, guid: cf00224cfe5539542bdab21f3147e30c, type: 3}
   - objectName: Lap5_1P
     targetSpriterenderer: {fileID: 604023748941956602, guid: 4792d9457c64e274a9200b99f58f7dec, type: 3}
-    lapSprite: {fileID: 21300000, guid: b60aafb642237d940969c9af5b3037ae, type: 3}
+    lapSprite: {fileID: 21300000, guid: 228cccac43f788145ad9c0a78db9c7d7, type: 3}
   - objectName: Lap1_2P
     targetSpriterenderer: {fileID: 9043058547414679414, guid: dafbfafe5b08ca74eaae2798de308eca, type: 3}
-    lapSprite: {fileID: 21300000, guid: 67389389316e6134281d1703016821ac, type: 3}
+    lapSprite: {fileID: 21300000, guid: 0305c48eec1730240bc28d75d36589e5, type: 3}
   - objectName: Lap2_2P
     targetSpriterenderer: {fileID: 9043058547414679414, guid: dafbfafe5b08ca74eaae2798de308eca, type: 3}
-    lapSprite: {fileID: 21300000, guid: 8ca2c52f3397e46468624f4a6479bef4, type: 3}
+    lapSprite: {fileID: 21300000, guid: bb6fe53ad850ed04f92c16eecdfaca68, type: 3}
   - objectName: Lap3_2P
     targetSpriterenderer: {fileID: 9043058547414679414, guid: dafbfafe5b08ca74eaae2798de308eca, type: 3}
-    lapSprite: {fileID: 21300000, guid: 77a07b650045f37428808aa8bcb1fee2, type: 3}
+    lapSprite: {fileID: 21300000, guid: 6d3a816317d12164a9e39f0667871f9f, type: 3}
   - objectName: Lap4_2P
     targetSpriterenderer: {fileID: 9043058547414679414, guid: dafbfafe5b08ca74eaae2798de308eca, type: 3}
-    lapSprite: {fileID: 21300000, guid: c355a06e494beda46990a5d1026e0975, type: 3}
+    lapSprite: {fileID: 21300000, guid: 3500cbef1bcd4aa40a1e08b172f5f480, type: 3}
   - objectName: Lap5_2P
     targetSpriterenderer: {fileID: 9043058547414679414, guid: dafbfafe5b08ca74eaae2798de308eca, type: 3}
-    lapSprite: {fileID: 21300000, guid: 362d25aa75d98514988f0033801336f9, type: 3}
+    lapSprite: {fileID: 21300000, guid: 4d49d265a32f9b646bc3422626c593a1, type: 3}
   lapCountText_1P: {fileID: 0}
   lapCountText_2P: {fileID: 0}
   lapCountText_3P: {fileID: 0}
