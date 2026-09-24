@@ -11,6 +11,10 @@ TagManager:
   - GoalFront
   - GoalBack
   - Wall
+  - StageLeft
+  - StageRight
+  - StageCenterTop
+  - StageCenterBottom
   layers:
   - Default
   - TransparentFX

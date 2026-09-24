@@ -249,7 +249,7 @@ public class RaceLap_Manager : MonoBehaviour
 
         //↓逆走時のUI表示処理↓
         //
-        if (PlayerMove.IsReverse)
+        if (ReverseRun_Manager.IsReverse)
         {
             
             if (flashingStatus == 0)
