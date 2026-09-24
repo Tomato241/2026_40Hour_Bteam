@@ -118,7 +118,7 @@ public class PlayerMove : MonoBehaviour
 
 
         playerAngles = transform.rotation.eulerAngles;//プレイヤーの角度を保存する
-        Debug.Log($"現在の角度{playerAngles}");
+
     }
 
     void FixedUpdate()

@@ -15,6 +15,9 @@ TagManager:
   - StageRight
   - StageCenterTop
   - StageCenterBottom
+  - GoalCenter
+  - MidFront
+  - MidBack
   layers:
   - Default
   - TransparentFX
